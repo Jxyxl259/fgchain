@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>test页面</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <!-- 页面5秒后自动跳转, 也可以将url设置为当前网址,实现页面自动刷新 -->
+    <meta http-equiv="refresh" /><!-- content="5;url=http://www.sohu.com" -->
+    <meta name="keywords" content="test,test,TEST"/>
+    <meta name="description" content="这是一个测试页面"/>
+    <meta name="author" content="jiangxy"/>
+</head>
+<body>
+    <h3>success</h3>
+
+    <!-- th:text 为转义输出，即输出纯文本，不会被当做HTML标签进行解析 -->
+    <div th:text="${param_1}"></div>
+<br/>
+    <!-- th:utext 为非转义输出， 即输出超文本，u 理解为ultimate 会当做HTML代码进行解析 -->
+    <div th:utext="${param_1}"></div>
+<hr>
+
+    <!-- th:each 循环遍历数组元素 -->
+    <div th:each="name,iterStat:${namelist}">
+        <span th:text="${iterStat.index}"></span>
+        <span th:text="${iterStat.current}"></span>
+    </div>
+
+    <!-- 直接生成四个a标签 -->
+    <a th:href="${name}" th:each="name : ${namelist}">[[${name}]]</a>
+
+
+    <!-- 生成四个span标签 -->
+    <div>
+        <span th:each="name : ${namelist}">[(${name})]</span>
+    </div>
+
+</body>
+</html>

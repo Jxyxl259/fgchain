@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+</head>
+<body>
+
+    <span id="id_01" >[[#{message.index.introduce}]]</span>
+    <a th:href="@{/index(language=zh_CN)}"> 中文</a> |
+    <a th:href="@{/index(language=en_US)}"> English</a>
+</body>
+</html>
