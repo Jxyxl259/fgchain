@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../css/login.css" th:href="@{/css/login.css}" rel="stylesheet">
+</head>
+<body>
+    <header class="common_header">
+
+    </header>
+    <div id="login_div">
+        <form id="login_form" action="" method="post">
+        <table>
+            <thead>
+                <tr>
+                    <td colspan="2">
+                        <div class="user_header_div">
+                            <img src="../image/user_header/user_header_icon_02.jpg" height="120" width="120"/>
+                        </div>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td width="150px">
+                    <div class="username_iocn_div">
+                        <img src="../image/login_page/username_bg_40x40.jpg" height="40" width="40"/>
+                    </div>
+                </td>
+                <td width="270px"><input id="username" name="username" placeholder="用户名" class="input_text"/></td>
+            </tr>
+            <tr>
+                <td width="150px">
+                    <div class="password_iocn_div">
+                        <img src="../image/login_page/password_bg_40x40.jpg" height="40" width="40"/>
+                    </div>
+                </td>
+                <td width="270px"><input type="password" id="password" name="password" placeholder="密码" class="input_text"/></td>
+            </tr>
+            <tr class="rememberme_tr">
+                <td  align="right">
+                    <input type="checkbox" name="rememberMe" checked="true" value="checked"/>
+                </td>
+                <td>记住我</td>
+            </tr>
+            <tfoot>
+            <tr>
+                <td colspan="2">
+                    <button class="login">登陆</button>
+                    <button class="regist">注册</button>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+        </form>
+    </div>
+    <div id="content">
+    </div>
+    <footer class="common_footer">
+
+    </footer>
+</body>
+</html>
