@@ -1,9 +1,18 @@
 package com.fgchain.main;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@ComponentScan({
+        "com.fgchain.main.module.front.login",
+        "com.fgchain.main.config"
+})
+@MapperScan({
+        "com.fgchain.main.module.**.dao"
+})
 public class MainApplication {
 
 	public static void main(String[] args) {
