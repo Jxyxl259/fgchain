@@ -1,6 +1,3 @@
-/**
- * Copyright &copy; 2012-2014 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
- */
 package com.fgchain.main.config.shiro;
 
 
@@ -44,10 +41,10 @@ public class MyShiroSessionManager extends DefaultWebSessionManager {
 
     @Override
     protected Serializable getSessionId(ServletRequest request, ServletResponse response) {
-// 如果参数中包含“__sid”参数，则使用此sid会话。 例如：http://localhost/project?__sid=xxx&__cookie=true
+        // 如果参数中包含“__sid”参数，则使用此sid会话。 例如：http://localhost/project?__sid=xxx&__cookie=true
         String sid = request.getParameter("__sid");
         if (StringUtils.isNotBlank(sid)) {
-// 是否将sid保存到cookie，浏览器模式下使用此参数。
+            // 是否将sid保存到cookie，浏览器模式下使用此参数。
             if (WebUtils.isTrue(request, "__cookie")){
                 HttpServletRequest rq = (HttpServletRequest)request;
                 HttpServletResponse rs = (HttpServletResponse)response;
@@ -55,7 +52,7 @@ public class MyShiroSessionManager extends DefaultWebSessionManager {
                 Cookie cookie = new SimpleCookie(template);
                 cookie.setValue(sid); cookie.saveTo(rq, rs);
             }
-// 设置当前session状态
+            // 设置当前session状态
             request.setAttribute(ShiroHttpServletRequest.REFERENCED_SESSION_ID_SOURCE,
                     ShiroHttpServletRequest.URL_SESSION_ID_SOURCE); // session来源与url
             request.setAttribute(ShiroHttpServletRequest.REFERENCED_SESSION_ID, sid);
