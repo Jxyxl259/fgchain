@@ -26,30 +26,40 @@ public class LoginController {
     @ResponseBody
     public RequestResult<Boolean> login(User u){
         log.debug("login user={}", u);
-        RequestResult<Boolean> result = RequestResultFactory.success();
+        RequestResult<Boolean> result = new RequestResult<>(true,true);
+
+        Subject subject = SecurityUtils.getSubject();
+
+        if(subject.isAuthenticated()){
+           return result;
+        }
 
         String username = u.getUserName();
         String password = u.getUserPassword();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 
-        Subject subject = SecurityUtils.getSubject();
         try {
             subject.login(token);
         } catch (ExcessiveAttemptsException e) {
             result.setSuccess(false);
+            result.setT(false);
             result.setResultMsg(GlobalMessageEnum.EXCESSIVE_LOGIN_TYR.getCommon());
             return result;
         } catch (UnknownAccountException e) {
             result.setSuccess(false);
+            result.setT(false);
             result.setResultMsg(GlobalMessageEnum.NO_SUCH_ACCOUNT.getCommon());
             return result;
         } catch (CredentialsException e){
             result.setSuccess(false);
+            result.setT(false);
             result.setResultMsg(GlobalMessageEnum.ERROR_USERNAME_OR_PASSWORD.getCommon());
             return result;
+        } catch (AuthenticationException e){
+            result.setSuccess(false);
+            result.setT(false);
+            result.setResultMsg(GlobalMessageEnum.AUTHENTICATION_ERROR.getCommon());
         }
-
-        result.setT(true);
 
         return result;
     }

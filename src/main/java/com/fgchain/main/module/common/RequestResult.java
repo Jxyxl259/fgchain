@@ -94,6 +94,8 @@ public class RequestResult<T> {
         this.t = t;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

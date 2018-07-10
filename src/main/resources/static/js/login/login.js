@@ -1,9 +1,21 @@
 $(function(){
 
+
+    //$("#username").
+
+
 /**
  * 用户登陆
  */
 $("#login_btn").click(function(){
+
+    var username = $("#username").val();
+    var password = $("#password").val();
+
+    if(isEmpty(username) || isEmpty(password) ){
+        alert("请输入用户名 及密码");
+        return;
+    }
 
     //var flag = false;
     var form = new FormData(document.getElementById("login_form"));
@@ -31,3 +43,34 @@ $("#login_btn").click(function(){
 
 
 });
+
+function isEmpty(obj){
+    if(typeof obj == "undefined" || obj == null || obj == ""){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+
+
+/**
+ * 用户头像回显
+ */
+function showUserHeaderIcon(input_ele){
+    var username = $(input_ele).val();
+    $.ajax({
+        url:"/user/userHeaderIcon/" + username,
+        type:"post",
+        async:true,
+        success:function(res){
+            if(res.success){
+                console.log("获取用户头像成功");
+                $("table>thead>tr>td>div>img").attr("src",res.t.userHeadIconUrl);
+
+            }else{
+                console.error("未能获取到用户头像");
+            }
+        }
+    });
+}

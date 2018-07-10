@@ -5,6 +5,7 @@
     <title>Title</title>
     <link href="../css/login.css" th:href="@{/css/login.css}" rel="stylesheet">
     <script type="text/javascript" src="webjars/jquery/3.3.1/dist/jquery.js"></script>
+    <script type="text/javascript" src="../js/login/login.js" th:src="@{/js/login/login.js}"></script>
 </head>
 <body>
     <header class="common_header">
@@ -26,10 +27,10 @@
             <tr>
                 <td width="150px">
                     <div class="username_iocn_div">
-                        <img src="../image/login_page/username_bg_40x40.jpg" height="40" width="40"/>
+                        <img id="user_header_icon_img" src="../image/login_page/username_bg_40x40.jpg" height="40" width="40"/>
                     </div>
                 </td>
-                <td width="270px"><input id="username" name="userName" placeholder="用户名" class="input_text"/></td>
+                <td width="270px"><input id="username" name="userName" placeholder="用户名" class="input_text" onblur="showUserHeaderIcon(this)"/></td>
             </tr>
             <tr>
                 <td width="150px">
@@ -62,5 +63,4 @@
 
     </footer>
 </body>
-<script type="text/javascript" src="../js/login/login.js" th:src="@{/js/login/login.js}"></script>
 </html>

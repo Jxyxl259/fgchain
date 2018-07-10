@@ -165,6 +165,7 @@
                      <include>**/*.html</include>
                      <include>**/*.css</include>
                      <include>**/*.jpg</include>
+                     <include>**/*.js</include>
                  </includes>
                  <filtering>false</filtering>
              </resource>

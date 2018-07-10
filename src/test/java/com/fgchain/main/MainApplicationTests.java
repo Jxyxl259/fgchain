@@ -1,8 +1,5 @@
 package com.fgchain.main;
 
-import com.alibaba.fastjson.JSON;
-import com.fgchain.main.module.front.login.dao.UserMapper;
-import com.fgchain.main.module.front.login.entity.User;
 import com.fgchain.main.module.front.login.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,15 +14,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class MainApplicationTests {
 
     @Autowired
-    private UserService userservice;
+    protected UserService userservice;
 
 	@Test
 	public void contextLoads() {
 	}
 
-	@Test
-    public void userSqlTest(){
-        User user = userservice.getUserByUsername("jiangBUG");
-        System.out.println(JSON.toJSONString(user));
-    }
+
 }

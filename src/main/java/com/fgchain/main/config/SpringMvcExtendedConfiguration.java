@@ -16,21 +16,18 @@ import java.util.Locale;
 @Configuration
 public class SpringMvcExtendedConfiguration extends WebMvcConfigurerAdapter {
 
-	@Bean
-	public WebMvcConfigurerAdapter webMvcConfigurerAdapter(){
-		return new WebMvcConfigurerAdapter(){
-			@Override
-			public void addViewControllers(ViewControllerRegistry registry) {
-				registry.addViewController("/").setViewName("index");
-				//registry.addViewController("/index.html").setViewName("index");
-				registry.addViewController("/index").setViewName("index");
-                registry.addViewController("/toLoginPage").setViewName("front/login");
-                registry.addViewController("/toUnauthorizedPage").setViewName("unauthorized");
-			}
-		};
-	}
 
-	/**
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("index");
+        //registry.addViewController("/index.html").setViewName("index");
+        registry.addViewController("/index").setViewName("index");
+        registry.addViewController("/toLoginPage").setViewName("front/login");
+        registry.addViewController("/toUnauthorizedPage").setViewName("unauthorized");
+    }
+
+    /**
 	 * 配置 locale解析对象
 	 * @return
 	 */

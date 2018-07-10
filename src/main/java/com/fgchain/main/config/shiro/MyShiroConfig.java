@@ -131,12 +131,13 @@ public class MyShiroConfig{
      */
     @Bean
     public DefaultWebSessionManager defaultWebSessionManager(){
-        DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
-        sessionManager.setGlobalSessionTimeout(1800000);
-        sessionManager.setDeleteInvalidSessions(true);
-        sessionManager.setSessionIdCookieEnabled(true);
-        sessionManager.setSessionIdCookieEnabled(true);
-        sessionManager.setSessionIdCookie(sessionIdCookie());
+//        DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
+//        sessionManager.setGlobalSessionTimeout(1800000);
+//        sessionManager.setDeleteInvalidSessions(true);
+//        sessionManager.setSessionIdCookieEnabled(true);
+//        sessionManager.setSessionIdCookieEnabled(true);
+//        sessionManager.setSessionIdCookie(sessionIdCookie());
+        MyShiroSessionManager sessionManager = new MyShiroSessionManager();
         return sessionManager;
     }
 
