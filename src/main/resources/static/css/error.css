@@ -1,0 +1,9 @@
+
+#page_404{
+    color:gray;
+    background-image: url("../error/404.jpg");
+}
+
+.signal{
+    color:red;
+}

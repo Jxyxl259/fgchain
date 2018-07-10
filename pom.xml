@@ -161,6 +161,7 @@
                  <includes>
                      <include>**/*.properties</include>
                      <include>**/*.xml</include>
+                     <!-- 需要将资源目录下的 html页面进行打包 不然thymeleaf模板引擎会报找不到模板的错误 -->
                      <include>**/*.html</include>
                      <include>**/*.css</include>
                      <include>**/*.jpg</include>
