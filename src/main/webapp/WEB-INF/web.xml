@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+           version="2.5">
+    <display-name>fgchain</display-name>
+
+<!--    <context-param>
+        <param-name>isLog4jContextSelectorNamed</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>log4jContextName</param-name>
+        <param-value>fgchain</param-value>
+    </context-param>-->
+<!--    <context-param>
+        <param-name>log4jConfiguration</param-name>
+        <param-value>classpath:log4j2-dev.xml</param-value>
+    </context-param>-->
+
+
+    <!-- log4j2-begin -->
+<!--    <listener>
+        <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
+    </listener>
+    <filter>
+        <filter-name>log4jServletFilter</filter-name>
+        <filter-class>org.apache.logging.log4j.web.Log4jServletFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>log4jServletFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>-->
+    <!-- log4j2-end -->
+
+</web-app>

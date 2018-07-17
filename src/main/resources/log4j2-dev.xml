@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="WARN" monitorInterval="150">
+
+    <properties>
+        <property name="LOG_HOME">/data/logs/myProject</property>
+        <property name="LOG_FILE_NAME">fgchain</property>
+    </properties>
+
+    <Appenders>
+        <File name="error" fileName="${LOG_HOME}/fgchain-error.log" append="true">
+            <Filters>
+                <ThresholdFilter level="fatal" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout
+                    pattern="[%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p] projectName : fgchain %X{hunterid} [%t] (%c:%L) - %m%n"/>
+        </File>
+
+        <!-- 以文件的形式输出, 带有自动压缩功能 -->
+        <RollingRandomAccessFile name="file"
+                                 fileName="${LOG_HOME}/${LOG_FILE_NAME}.log"
+                                 filePattern="${LOG_HOME}/${LOG_FILE_NAME}.%d{yyyy-MM-dd-HH}-%i.log.bak"
+                                 immediateFlush="true" append="true">
+            <Filters>
+                <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout
+                    pattern="[%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p] projectName : fgchain %X{hunterid} [%t] (%c:%L) - %m%n"/>
+            <Policies>
+                <!-- 定时压缩 -->
+                <TimeBasedTriggeringPolicy modulate="true" interval="24"/>
+                <!-- 文件大小达到10M时压缩 -->
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <!-- 最多保存2份文件,  -->
+            <DefaultRolloverStrategy max="2"/>
+        </RollingRandomAccessFile>
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [thread-->%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <asyncRoot level="debug" includeLocation="false">
+            <AppenderRef ref="file"/>
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="error"/>
+        </asyncRoot>
+
+        <logger name="org.springframework" level="warn" />
+        <logger name="org.mybatis.spring.SqlSessionUtils" level="info" />
+    </Loggers>
+
+</Configuration>

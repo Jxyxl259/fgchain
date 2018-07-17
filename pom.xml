@@ -6,7 +6,7 @@
     <groupId>com.fgchain</groupId>
     <artifactId>main</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>main</name>
     <description>Demo project for Spring Boot</description>
@@ -41,6 +41,13 @@
             </exclusions>
         </dependency>
 
+        <!-- 使用外部Servlet容器 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- 以 webjars的方式引入jquery -->
         <!-- 页面直接以webjars/jquery/3.3.1/jquery.js的方式引入jquery库 -->
         <dependency>
@@ -49,11 +56,25 @@
             <version>3.3.1</version>
         </dependency>
 
+        <!-- log4j2 start -->
         <!-- 添加log4j2依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
+        <!-- log4j异步日志所需jar包 -->
+        <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+        <!-- servlet2.5环境下使用log4j2 所需log4j-web -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-web</artifactId>
+            <version>2.5</version>
+        </dependency>
+        <!-- log4j end -->
 
         <!-- mybatis整合 -->
         <dependency>
@@ -135,6 +156,12 @@
             <version>3.7</version>
         </dependency>
 
+        <!-- 热部署 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
 
@@ -159,13 +186,7 @@
              <resource>
                  <directory>src/main/resources</directory>
                  <includes>
-                     <include>**/*.properties</include>
-                     <include>**/*.xml</include>
-                     <!-- 需要将资源目录下的 html页面进行打包 不然thymeleaf模板引擎会报找不到模板的错误 -->
-                     <include>**/*.html</include>
-                     <include>**/*.css</include>
-                     <include>**/*.jpg</include>
-                     <include>**/*.js</include>
+                     <include>**/*</include>
                  </includes>
                  <filtering>false</filtering>
              </resource>

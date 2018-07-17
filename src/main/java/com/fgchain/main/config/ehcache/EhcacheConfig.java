@@ -4,6 +4,7 @@ import net.sf.ehcache.CacheManager;
 import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
 
 /**
@@ -12,10 +13,11 @@ import org.springframework.core.io.ClassPathResource;
  * @create: 2018-07-08 15:11
  */
 @Configuration
+@Order(1)
 public class EhcacheConfig {
 
     @Bean
-    public CacheManager ehCacheManager(){
+    public CacheManager cacheManager(){
         EhCacheManagerFactoryBean ehCacheManagerFactory = new EhCacheManagerFactoryBean();
         ehCacheManagerFactory.setConfigLocation(new ClassPathResource("EhcacheConfig/ehcache.xml"));
         ehCacheManagerFactory.afterPropertiesSet();

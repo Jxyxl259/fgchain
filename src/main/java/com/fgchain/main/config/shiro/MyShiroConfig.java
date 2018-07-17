@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
 /**
  * @description: Shiro权限管理框架配置
@@ -27,6 +28,7 @@ import org.springframework.context.annotation.Configuration;
  * @create: 2018-07-08 14:17
  */
 @Configuration
+@Order(3)
 public class MyShiroConfig{
 
     @Autowired
