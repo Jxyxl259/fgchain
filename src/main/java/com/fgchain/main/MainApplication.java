@@ -14,7 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
         "com.fgchain.main.module.**.dao"
 })
 public class MainApplication {
-	// 测试jenkins构建13
+	// 测试jenkins构建14
 	public static void main(String[] args) {
 		SpringApplication.run(MainApplication.class, args);
 	}
