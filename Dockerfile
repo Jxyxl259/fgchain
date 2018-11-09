@@ -5,4 +5,4 @@ MAINTAINER Tommie.J <jiangbug@outlook.com>
 ENV project_env dev
 RUN yum install -y vim net-tools
 
-EXPOSE 80 80
+EXPOSE 8080 8080
