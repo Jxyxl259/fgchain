@@ -6,7 +6,7 @@
     <groupId>com.fgchain</groupId>
     <artifactId>main</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>main</name>
     <description>Demo project for Spring Boot</description>
@@ -45,7 +45,9 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
+<!--
             <scope>provided</scope>
+-->
         </dependency>
 
         <!-- 以 webjars的方式引入jquery -->
@@ -171,6 +173,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                    <addResources>true</addResources>
+                </configuration>
             </plugin>
         </plugins>
 
@@ -191,8 +197,6 @@
                  <filtering>false</filtering>
              </resource>
         </resources>
-
-
     </build>
 
 
