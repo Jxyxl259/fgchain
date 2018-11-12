@@ -10,7 +10,15 @@
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="./js/homepage.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        $(function () {
+
+            $("#carousel_img_div").attr("style","background-image: url('/image/carousel/lunbo_02.png') ; background-size: 750px 300px");
+            alert("aaaa");
+        });
+
+    </script>
 </head>
 <body>
 <!-- 公共头 -->
@@ -38,7 +46,7 @@
         <div id="undecided_01" class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
         <div id="home_page_carousel_div" class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
             <!-- 轮播图片使用div的background属性制作的， 轮播图片大小限制为 750 * 300 -->
-            <div id="carousel_img_div">
+            <div id="carousel_img_div" style="background-image: url('/image/carousel/lunbo_01.jpg')">
                 <!-- 轮播图向左向右按钮 -->
                 <div class="row">
                     <div id="carousel_previous_div" class="carousel_blank_holder_div col-xs-1 col-sm-1 col-md-1 col-lg-1">
