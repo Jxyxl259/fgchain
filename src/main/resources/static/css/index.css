@@ -53,3 +53,7 @@ body #home_page_carousel_point_div>#carousel_point_box .inactive_carousel_point 
     font-size: x-large;
     color: white;
 }
+
+/* 登录表单的容器 */
+#login_form_container {z-index: 50; display:none ;position: fixed; margin-left: 380px; margin-top: 0px}
+#login_form_container>.middle_form_iframe {width: 500px; height: 500px;border: 1px}

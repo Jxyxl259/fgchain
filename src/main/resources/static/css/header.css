@@ -2,5 +2,5 @@
 #top_nav_span { width: auto; height: 35px}
 #top_nav_span .top_nav_btn {margin: 7px 0px }
 #top_nav_span #show_home_page_btn {margin-left: 850px}
-#top_nav_span #show_login_form_btn {margin-left: 10px}
+#top_nav_span #login_btn {margin-left: 10px}
 /* body>div>div.container{margin: 0px 0px} */
