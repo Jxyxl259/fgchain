@@ -1,45 +1,55 @@
 .across_li {display: block; float: left;}
-/* body .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12{padding: 0px 1px} */
 body #home_page_top_nav_div {background-color: #d5d5d5}
 body #home_page_top_nav_div>#home_page_top_nav_ul {padding-left: 160px}
 body #home_page_top_nav_div li { margin: 0px 50px;line-height: 30px}
 
-body #home_page_carousel_div { height: 300px }
-body #home_page_carousel_div .carousal_img {width: 100%; height: 100% }
-/* 轮播图向前向后按钮所在行的高度 */
-body .carousel_blank_holder_div { height: 250px }
-/* 轮播图小圆点所在行高度 */
-body #carousel_point_div { height: 50px }
-
-/*body #home_page_carousel_div li {text-align: center; overflow:hidden; height: 300px}*/
-/*body #home_page_carousel_div li img {margin: 0 -100%; }*/
-
-/* 轮播图选择小圆点区域 */
-body #home_page_carousel_point_div {z-index:2; position: relative; text-align: left; background: red ;#margin:270px 800px 5px 250px; width: 150px; height:30px; }
-/*body #home_page_carousel_point_div .carousel_point_li { margin: 0px 10px; line-height: 30px}*/
-/* 轮播图小圆点样式 */
-body #home_page_carousel_point_div .carousel_point {
-    #overflow: hidden;
-    position: relative;
-    display: inline-block;
-    border:1px solid black;
-    width:12px;
-    height:12px;
-    background: #fff;
-    margin: 0 5px;
-    -webkit-border-radius:6px;
-    -moz-border-radius:6px;
-    -o-border-radius:6px;
-    border-radius:6px;
-
-
-
-    #cursor: pointer;
-}
-
+/* 轮播图图片div */
 #carousel_img_div {width:750px; height: 300px; background-image: url("../image/carousel/lunbo_01.jpg") ; background-size: 750px 300px}
 
 /* 轮播图向前向后切换图片按钮 */
 .carousel_btn { margin-top: 120px; padding: 10px 3px}
 .previous_carousel_btn{ margin-left: 10px; }
 .next_carousel_btn{ margin-right: 10px;}
+
+/* 轮播图向前向后按钮所在行的高度 */
+body .carousel_blank_holder_div { height: 250px }
+
+/* 轮播图选择小圆点区域 */
+/* 轮播图小圆点所在行高度 50 */
+body #home_page_carousel_point_div { height: 50px; padding: 0px 15px ;background-image: linear-gradient(to top, black , transparent 120%); background-clip: content-box}
+body #home_page_carousel_div #carousel_point_box {position: relative; width: 120px; float: right; margin: 25px 20px 5px 0px;}
+
+#carousel_point_box span{
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+}
+
+/* 轮播图小圆点样式 */
+body #home_page_carousel_point_div>#carousel_point_box .inactive_carousel_point {
+    width:12px;
+    height:12px;
+    background: #fff;
+    margin: 0px 2px;
+    -webkit-border-radius:6px;
+    -moz-border-radius:6px;
+    -o-border-radius:6px;
+    border-radius:6px;
+    #cursor: pointer;
+}
+
+/* 当前显示的圆点样式 */
+.carousel_active_point {
+    background: #ff3d3d;
+    width: 22px;
+    height: 12px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+#hot_title{
+    float: left;
+    margin: 7px 0px 0px 10px;
+    font-size: x-large;
+    color: white;
+}
