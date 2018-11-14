@@ -41,7 +41,7 @@ public class LoginController {
 
         try {
             subject.login(token);
-            session.setAttribute("login_user", u);
+            session.setAttribute("user", u);
         } catch (ExcessiveAttemptsException e) {
             result.setSuccess(false);
             result.setT(false);

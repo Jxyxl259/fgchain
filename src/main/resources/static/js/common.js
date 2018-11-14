@@ -40,9 +40,8 @@ $(function(){
                     // 登陆成功
                     document.getElementById("login_form").reset();
                     $("#login_form_container").addClass("vanish");
-                    $()
 
-                    //window.location.href=window.location.href.substr(0,window.location.href.lastIndexOf("/"));
+                    window.location.href=window.location.href.substr(0,window.location.href.lastIndexOf("/"));
                 }else{
                     // 登录失败
                     alert("登陆失败, 错误原因:" + res.resultMsg);
