@@ -224,6 +224,9 @@ public class MyShiroConfig{
         }
 
         // 设置登陆页面,登陆成功页面,未授权页面
+        // 统统将这些配置（SpringShiroFilter的配置(securityManager、FilterChainResolver)）
+        // 全部移到 filterChainManager(FilterChainResolver的属性) 之中了
+
         /*shiroFilterFactory.setLoginUrl("/toLoginPage");
         shiroFilterFactory.setSuccessUrl("/index");
         shiroFilterFactory.setUnauthorizedUrl("/toUnauthorizedPage");*/
@@ -274,6 +277,7 @@ public class MyShiroConfig{
     }
 
 
+    // 先执行此方法，再执行上面的 shiroFilterFactoryBean(); 方法
     @Bean
     //@Order(20000)
     public MethodInvokingFactoryBean methodInvokingFactoryBean(FilterChainResolver filterChainResolver) throws Throwable{
