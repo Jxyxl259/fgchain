@@ -6,6 +6,8 @@
     <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">-->
     <title>Title</title>
     <link th:href="@{/css/index.css}" rel="stylesheet">
+    <link th:href="@{/css/login_form.css}" rel="stylesheet">
+
     <link href="./css/header.css" rel="stylesheet" type="text/css"/>
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
@@ -47,12 +49,60 @@
             </ul>
         </div>
     </div>
+
+    <!-- 登录表单的容器 -->
+    <div id="login_form_container" class="vanish">
+        <!--<iframe id="login_form_iframe" class="middle_form_iframe " src="./front/fragement/login_form.html"></iframe>-->
+        <div id="login_div">
+            <form id="login_form" action="" method="post">
+                <table>
+                    <thead>
+                    <tr>
+                        <td colspan="2">
+                            <div class="user_header_div">
+                                <img src="../../image/user_header/user_header_icon_02.jpg" height="120" width="120"/>
+                            </div>
+                        </td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td width="150px">
+                            <div class="username_iocn_div">
+                                <img id="user_header_icon_img" src="../../image/login_page/username_bg_40x40.jpg" height="40" width="40"/>
+                            </div>
+                        </td>
+                        <td width="270px"><input id="username" name="userName" placeholder="用户名" class="input_text" onblur="showUserHeaderIcon(this)"/></td>
+                    </tr>
+                    <tr>
+                        <td width="150px">
+                            <div class="password_iocn_div">
+                                <img src="../../image/login_page/password_bg_40x40.jpg" height="40" width="40"/>
+                            </div>
+                        </td>
+                        <td width="270px"><input type="password" id="password" name="userPassword" placeholder="密码" class="input_text"/></td>
+                    </tr>
+                    <tr class="rememberme_tr">
+                        <td  align="right">
+                            <input type="checkbox" name="rememberMe" checked="true" value="checked"/>
+                        </td>
+                        <td>记住我</td>
+                    </tr>
+                    <tfoot>
+                    <tr>
+                        <td colspan="2">
+                            <button id="login_btn" class="login">登陆</button>
+                            <button id="regist_btn" class="regist">注册</button>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </form>
+        </div>
+    </div>
+
     <!-- 首页轮播图 -->
     <!-- 轮播图的更新应该是向后台发送ajax请求，请求一组轮播图的图片Url -->
-    <!-- 登录表单的容器 -->
-    <div id="login_form_container">
-        <iframe id="login_form_iframe" class="middle_form_iframe " src="./front/fragement/login_form.html"></iframe>
-    </div>
     <div class="row">
         <div id="undecided_01" class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
         <div id="home_page_carousel_div" class="col-xs-8 col-sm-8 col-md-8 col-lg-8">

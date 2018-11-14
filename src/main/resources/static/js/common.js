@@ -1,10 +1,12 @@
 
 $(function(){
 
-    /* 显示登陆 iframe 页面 */
+    /**
+     * 显示/隐藏 登录div
+     */
     $("#show_login_form_btn").click(
         function(){
-            $("#login_form_container").show();
+            $("#login_form_container").toggleClass("vanish");
         }
     );
 
@@ -35,11 +37,15 @@ $(function(){
             success:function(res){
                 // TODO 重置登陆form表单内容, 隐藏登陆 iframe DIV 导航上不再显示登陆按钮, 显示登陆用户名 并显示"我的"
                 if(res.success){
-                    console.log("登陆成功,跳转到首页");
-                    window.location.href=window.location.href.substr(0,window.location.href.lastIndexOf("/"));
+                    // 登陆成功
+                    document.getElementById("login_form").reset();
+                    $("#login_form_container").addClass("vanish");
+                    $()
 
+                    //window.location.href=window.location.href.substr(0,window.location.href.lastIndexOf("/"));
                 }else{
-                    console.error("登陆失败, 错误原因:" + res.resultMsg);
+                    // 登录失败
+                    alert("登陆失败, 错误原因:" + res.resultMsg);
                 }
             }
         });
