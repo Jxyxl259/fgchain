@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>zone_mc</title>
-    <link th:href="@{/css/zone.css}" href="../../css/zone.css" rel="stylesheet">
+    <link th:href="@{/css/zone/zone.css}" href="../../css/zone/zone.css" rel="stylesheet">
     <link th:href="@{/css/header.css}" href="../../css/header.css" rel="stylesheet" type="text/css"/>
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
@@ -22,7 +22,7 @@
 <div class="container" >
     <div class="row">
         <!-- 左侧树形菜单 容器 -->
-        <div id="zone_menu_tree_container_div" class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        <div id="zone_menu_tree_container_div" class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no_left_padding">
             <div class="panel-group" id="menu_tree_div">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -147,8 +147,8 @@
         </div>
 
         <!--  右侧 iframe 内联框架 容器-->
-        <div id="zone_iframe_detail_container_div" class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-            <iframe name="detail_iframe" src="/"></iframe>
+        <div id="zone_iframe_detail_container_div" class="col-xs-10 col-sm-10 col-md-10 col-lg-10 no_left_padding no_right_padding">
+            <iframe id="menu_detail_iframe" name="detail_iframe" src="/"></iframe>
         </div>
     </div>
 </div>
