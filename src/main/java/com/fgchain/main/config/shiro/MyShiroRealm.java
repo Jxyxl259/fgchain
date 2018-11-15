@@ -22,7 +22,7 @@ public class MyShiroRealm extends AuthorizingRealm{
 
     private static Logger log = LoggerFactory.getLogger(MyShiroRealm.class);
 
-    @Autowired
+    // @Autowired
     private UserService userService;
 
     /**
@@ -63,6 +63,10 @@ public class MyShiroRealm extends AuthorizingRealm{
                 );
 
         return info;
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
     public static void main(String[] args) {
