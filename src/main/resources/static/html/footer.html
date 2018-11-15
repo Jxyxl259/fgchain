@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="container" th:fragment="footer">
+        <div class="row">
+            <div id="footer_div" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <span>&copy;2018 good luck</span>
+            </div>
+        </div>
+        <div class="row">
+            <div id="i18n_div" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <span id="id_01" >[[#{message.index.introduce}]]</span>
+                <a th:href="@{/index(language=zh_CN)}"> 中文</a> |
+                <a th:href="@{/index(language=en_US)}"> English</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

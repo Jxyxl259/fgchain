@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>zone_mc</title>
+    <link th:href="@{/css/zone.css}" href="../../css/zone.css" rel="stylesheet">
+    <link th:href="@{/css/header.css}" href="../../css/header.css" rel="stylesheet" type="text/css"/>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script th:href="@{/js/zone.js}" src="../../js/zone.js"></script>
+    <script th:href="@{/js/common.js}" src="../../js/common.js"></script>
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body>
+<!-- 公共头 -->
+<div th:insert="~{header :: head_nav}"></div>
+
+<div class="container" >
+    <div class="row">
+        <!-- 左侧树形菜单 容器 -->
+        <div id="zone_menu_tree_container_div" class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <div class="panel-group" id="menu_tree_div">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#menu_tree_div" href="#system_branch">
+                                系统
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="system_branch" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="">
+                                    <div id="zone_menu_system" class="menu_branch_content">
+                                        <ul type="none">
+                                            <li>用户管理</li>
+                                            <li>角色管理</li>
+                                            <li>权限管理</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#menu_tree_div" href="#video_branch">
+                                视频
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="video_branch" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="">
+                                    <div id="zone_menu_video" class="menu_branch_content">
+                                        <ul type="none">
+                                            <li>视频列表</li>
+                                            <li>视频审核</li>
+                                            <li>视频上传</li>
+                                            <li>我的视频</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#menu_tree_div" href="#article_branch">
+                                文章
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="article_branch" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="">
+                                    <div id="zone_menu_article" class="menu_branch_content">
+                                        <ul type="none">
+                                            <li>文章列表</li>
+                                            <li>文章审核</li>
+                                            <li>文章发布</li>
+                                            <li>我的文章</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#menu_tree_div" href="#trade_branch">
+                                铺子
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="trade_branch" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="">
+                                    <div id="zone_menu_trade" class="menu_branch_content">
+                                        <ul type="none">
+                                            <li>商品发布</li>
+                                            <li>我的在售</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#menu_tree_div" href="#advertise_branch">
+                                广告
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="advertise_branch" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="">
+                                    <div id="zone_menu_advertise" class="menu_branch_content">
+                                        <ul type="none">
+                                            <li>广告配置</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--  右侧 iframe 内联框架 容器-->
+        <div id="zone_iframe_detail_container_div" class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+
+        </div>
+    </div>
+</div>
+
+<!-- 公共尾 -->
+<div th:insert="~{footer :: footer}"></div>
+</body>
+</html>

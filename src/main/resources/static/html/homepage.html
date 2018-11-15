@@ -8,14 +8,14 @@
     <link th:href="@{/css/index.css}" rel="stylesheet">
     <link th:href="@{/css/login_form.css}" rel="stylesheet">
 
-    <link href="./css/header.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/header.css" rel="stylesheet" type="text/css"/>
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- 首页js -->
-    <script src="./js/homepage.js"></script>
-    <script src="./js/common.js"></script>
+    <script src="../js/homepage.js"></script>
+    <script src="../js/common.js"></script>
     <script type="text/javascript">
 
         $(function () {
@@ -44,7 +44,7 @@
                 <li class="across_li">文章</li>
                 <li class="across_li">热图</li>
                 <li class="across_li">活动</li>
-                <li class="across_li">社区</li>
+                <li class="across_li">圈子</li>
                 <li class="across_li">商城</li>
             </ul>
         </div>
@@ -60,7 +60,7 @@
                     <tr>
                         <td colspan="2">
                             <div class="user_header_div">
-                                <img src="../../image/user_header/user_header_icon_02.jpg" height="120" width="120"/>
+                                <img src="../image/user_header/user_header_icon_02.jpg" height="120" width="120"/>
                             </div>
                         </td>
                     </tr>
@@ -69,7 +69,7 @@
                     <tr>
                         <td width="150px">
                             <div class="username_iocn_div">
-                                <img id="user_header_icon_img" src="../../image/login_page/username_bg_40x40.jpg" height="40" width="40"/>
+                                <img id="user_header_icon_img" src="../image/login_page/username_bg_40x40.jpg" height="40" width="40"/>
                             </div>
                         </td>
                         <td width="270px"><input id="username" name="userName" placeholder="用户名" class="input_text" onblur="showUserHeaderIcon(this)"/></td>
@@ -77,7 +77,7 @@
                     <tr>
                         <td width="150px">
                             <div class="password_iocn_div">
-                                <img src="../../image/login_page/password_bg_40x40.jpg" height="40" width="40"/>
+                                <img src="../image/login_page/password_bg_40x40.jpg" height="40" width="40"/>
                             </div>
                         </td>
                         <td width="270px"><input type="password" id="password" name="userPassword" placeholder="密码" class="input_text"/></td>
@@ -107,7 +107,7 @@
         <div id="undecided_01" class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
         <div id="home_page_carousel_div" class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
             <!-- 轮播图片使用div的background属性制作的， 轮播图片大小限制为 750 * 300 -->
-            <div id="carousel_img_div" style="background-image: url('/image/carousel/lunbo_01.jpg')">
+            <div id="carousel_img_div" style="background-image: url('../image/carousel/lunbo_01.jpg')">
                 <!-- 轮播图向左向右按钮 -->
                 <div class="row">
                     <div id="carousel_previous_div" class="carousel_blank_holder_div col-xs-1 col-sm-1 col-md-1 col-lg-1">
@@ -140,6 +140,8 @@
 
 </div>
 
+<!-- 公共尾 -->
+<div th:insert="~{footer :: footer}"></div>
 
 </body>
 </html>

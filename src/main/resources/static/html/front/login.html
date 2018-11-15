@@ -3,14 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="../css/login.css" th:href="@{/css/login.css}" rel="stylesheet">
+
+    <link th:href="@{/css/header.css}" href="../../css/header.css" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/login.css}" href="../../css/login.css" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="webjars/jquery/3.3.1/dist/jquery.js"></script>
-    <script type="text/javascript" src="../js/login/login.js" th:src="@{/js/login/login.js}"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/login/login.js" th:src="@{/js/login/login.js}"></script>
 </head>
 <body>
-    <header class="common_header">
+    <!-- 公共头 -->
+    <div class="container" th:fragment="head_nav">
+        <div class="row">
+            <div id="top_nav_div" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <nav id="top_nav">
+                    <a id="show_home_page_btn"
+                       type="button"
+                       class="top_nav_btn btn btn-success  btn-xs" href="/index">首页</a>
+                </nav>
 
-    </header>
+            </div>
+        </div>
+    </div>
+
+    <!-- 登录from表单 -->
     <div id="login_div">
         <form id="login_form" action="" method="post">
         <table>
@@ -18,7 +34,7 @@
                 <tr>
                     <td colspan="2">
                         <div class="user_header_div">
-                            <img src="../image/user_header/user_header_icon_02.jpg" height="120" width="120"/>
+                            <img src="../../image/user_header/user_header_icon_02.jpg" height="120" width="120"/>
                         </div>
                     </td>
                 </tr>
@@ -27,7 +43,7 @@
             <tr>
                 <td width="150px">
                     <div class="username_iocn_div">
-                        <img id="user_header_icon_img" src="../image/login_page/username_bg_40x40.jpg" height="40" width="40"/>
+                        <img id="user_header_icon_img" src="../../image/login_page/username_bg_40x40.jpg" height="40" width="40"/>
                     </div>
                 </td>
                 <td width="270px"><input id="username" name="userName" placeholder="用户名" class="input_text" onblur="showUserHeaderIcon(this)"/></td>
@@ -35,7 +51,7 @@
             <tr>
                 <td width="150px">
                     <div class="password_iocn_div">
-                        <img src="../image/login_page/password_bg_40x40.jpg" height="40" width="40"/>
+                        <img src="../../image/login_page/password_bg_40x40.jpg" height="40" width="40"/>
                     </div>
                 </td>
                 <td width="270px"><input type="password" id="password" name="userPassword" placeholder="密码" class="input_text"/></td>
@@ -44,7 +60,7 @@
                 <td  align="right">
                     <input type="checkbox" name="rememberMe" checked="true" value="checked"/>
                 </td>
-                <td>记住我</td>
+                <td id="remember_me_td" class="remember_me">记住我</td>
             </tr>
             <tfoot>
             <tr>
@@ -59,8 +75,8 @@
     </div>
     <div id="content">
     </div>
-    <footer class="common_footer">
 
-    </footer>
+<!-- 公共尾 -->
+<div th:insert="~{footer :: footer}"></div>
 </body>
 </html>

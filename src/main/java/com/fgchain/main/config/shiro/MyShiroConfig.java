@@ -221,6 +221,7 @@ public class MyShiroConfig{
         // 配置过滤器过滤规则
         Map<String, String> filterDefMap = new LinkedHashMap<>();
         filterDefMap.put("/logout", "logout");
+        filterDefMap.put("/zone/**", "authc");
         filterChainManager.setFilterChainDefinitionMap(filterDefMap);
 
         // 此处添加自定义拦截器实现扩展

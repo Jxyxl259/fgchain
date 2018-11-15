@@ -25,6 +25,7 @@ public class SpringMvcExtendedConfiguration extends WebMvcConfigurerAdapter {
         registry.addViewController("/index").setViewName("homepage");
         registry.addViewController("/toLoginPage").setViewName("front/login");
         registry.addViewController("/toUnauthorizedPage").setViewName("unauthorized");
+        registry.addViewController("/zone/mc").setViewName("zone/zone_mc");
     }
 
     /**
