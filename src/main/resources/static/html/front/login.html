@@ -12,8 +12,9 @@
     <script type="text/javascript" src="../../js/login/login.js" th:src="@{/js/login/login.js}"></script>
 </head>
 <body>
-    <!-- 公共头 -->
-    <div class="container" th:fragment="head_nav">
+
+    <div class="container">
+        <!-- 公共头 -->
         <div class="row">
             <div id="top_nav_div" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <nav id="top_nav">
@@ -24,58 +25,61 @@
 
             </div>
         </div>
-    </div>
 
-    <!-- 登录from表单 -->
-    <div id="login_div">
-        <form id="login_form" action="" method="post">
-        <table>
-            <thead>
-                <tr>
-                    <td colspan="2">
-                        <div class="user_header_div">
-                            <img src="../../image/user_header/user_header_icon_02.jpg" height="120" width="120"/>
-                        </div>
-                    </td>
-                </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td width="150px">
-                    <div class="username_iocn_div">
-                        <img id="user_header_icon_img" src="../../image/login_page/username_bg_40x40.jpg" height="40" width="40"/>
-                    </div>
-                </td>
-                <td width="270px"><input id="username" name="userName" placeholder="用户名" class="input_text" onblur="showUserHeaderIcon(this)"/></td>
-            </tr>
-            <tr>
-                <td width="150px">
-                    <div class="password_iocn_div">
-                        <img src="../../image/login_page/password_bg_40x40.jpg" height="40" width="40"/>
-                    </div>
-                </td>
-                <td width="270px"><input type="password" id="password" name="userPassword" placeholder="密码" class="input_text"/></td>
-            </tr>
-            <tr class="rememberme_tr">
-                <td  align="right">
-                    <input type="checkbox" name="rememberMe" checked="true" value="checked"/>
-                </td>
-                <td id="remember_me_td" class="remember_me">记住我</td>
-            </tr>
-            <tfoot>
-            <tr>
-                <td colspan="2">
-                    <button id="login_btn" class="login">登陆</button>
-                    <button id="regist_btn" class="regist">注册</button>
-                </td>
-            </tr>
-            </tfoot>
-        </table>
-        </form>
-    </div>
-    <div id="content">
-    </div>
 
+        <!--登录页背景图-->
+        <div class="row">
+            <div id="login_page_bg_img_div" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <!-- 登录from表单 -->
+                <div id="login_div">
+                    <form id="login_form" action="" method="post">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="user_header_div">
+                                        <img src="../../image/user_header/user_header_icon_02.jpg" height="120" width="120"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td width="150px">
+                                <div class="username_iocn_div">
+                                    <img id="user_header_icon_img" src="../../image/login_page/username_bg_40x40.jpg" height="40" width="40"/>
+                                </div>
+                            </td>
+                            <td width="270px"><input id="username" name="userName" placeholder="用户名" class="input_text" onblur="showUserHeaderIcon(this)"/></td>
+                        </tr>
+                        <tr>
+                            <td width="150px">
+                                <div class="password_iocn_div">
+                                    <img src="../../image/login_page/password_bg_40x40.jpg" height="40" width="40"/>
+                                </div>
+                            </td>
+                            <td width="270px"><input type="password" id="password" name="userPassword" placeholder="密码" class="input_text"/></td>
+                        </tr>
+                        <tr class="rememberme_tr">
+                            <td  align="right">
+                                <input type="checkbox" name="rememberMe" checked="true" value="checked"/>
+                            </td>
+                            <td id="remember_me_td" class="remember_me">记住我</td>
+                        </tr>
+                        <tfoot>
+                        <tr>
+                            <td colspan="2">
+                                <button id="login_btn" class="login">登陆</button>
+                                <button id="regist_btn" class="regist">注册</button>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 <!-- 公共尾 -->
 <div th:insert="~{footer :: footer}"></div>
 </body>

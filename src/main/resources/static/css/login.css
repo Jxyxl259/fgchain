@@ -6,17 +6,11 @@ body{
 }
 
 
-#content{
+#login_page_bg_img_div{
     position: relative;
     float: right;
-    /* z-index: 2; */
-    margin-top: -460px;
-    margin-right: 89px;
     padding: 0px 0px;
     background: url(../image/login_page/login_2.jpg) center no-repeat;
-    background-position: 0px -100px;
-    background-clip: content-box;
-    width: 1170px;
     height: 500px;
 }
 
