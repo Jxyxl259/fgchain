@@ -1,45 +1,51 @@
 $(function(){
 
-
-    //$("#username").
-
-
-/**
- * 用户登陆
- */
-$("#login_btn").click(function(){
-
-    var username = $("#username").val();
-    var password = $("#password").val();
-
-    if(isEmpty(username) || isEmpty(password) ){
-        alert("请输入用户名 及密码");
-        return;
-    }
-
-    //var flag = false;
-    var form = new FormData(document.getElementById("login_form"));
-
-    $.ajax({
-        url:"/doLogin",
-        type:"post",
-        data:form,
-        async:false,
-        processData:false,
-        contentType:false,
-        success:function(res){
-            if(res.success){
-                console.log("登陆成功,跳转到首页");
-                window.location.href=window.location.href.substr(0,window.location.href.lastIndexOf("/"));
-
-            }else{
-                console.error("登陆失败, 错误原因:" + res.resultMsg);
-            }
+    /**
+     * 显示/隐藏 登录div
+     */
+    $("#show_login_form_btn").click(
+        function(){
+            $("#login_form_container").toggleClass("vanish");
         }
-    });
+    );
 
-   return false;
-})
+
+    /**
+     * 用户登陆
+     */
+    $("#login_btn").click(function(){
+
+        var username = $("#username").val();
+        var password = $("#password").val();
+
+        if(isEmpty(username) || isEmpty(password) ){
+            alert("请输入用户名 及密码");
+            return;
+        }
+
+        //var flag = false;
+        var form = new FormData(document.getElementById("login_form"));
+
+        $.ajax({
+            url:"/doLogin",
+            type:"post",
+            data:form,
+            async:false,
+            processData:false,
+            contentType:false,
+            success:function(res){
+                if(res.success){
+                    console.log("登陆成功,跳转到首页");
+                    window.location.href=window.location.href.substr(0,window.location.href.lastIndexOf("/"));
+
+                }else{
+                    console.error("登陆失败, 错误原因:" + res.resultMsg);
+                }
+            }
+        });
+
+       return false;
+    })
 
 
 });
