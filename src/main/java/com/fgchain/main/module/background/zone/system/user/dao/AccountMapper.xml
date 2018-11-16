@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fgchain.main.module.background.zone.system.user.dao.AccountMapper" >
+  <resultMap id="BaseResultMap" type="com.fgchain.main.module.front.login.entity.User" >
+    <id column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_password" property="userPassword" jdbcType="VARCHAR" />
+    <result column="user_nick_name" property="userNickName" jdbcType="VARCHAR" />
+    <result column="user_age" property="userAge" jdbcType="INTEGER" />
+    <result column="user_gender" property="userGender" jdbcType="INTEGER" />
+    <result column="user_birth" property="userBirth" jdbcType="TIMESTAMP" />
+    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+    <result column="user_qq_number" property="userQqNumber" jdbcType="VARCHAR" />
+    <result column="user_wechat_account_name" property="userWechatAccountName" jdbcType="VARCHAR" />
+    <result column="user_head_icon_url" property="userHeadIconUrl" jdbcType="VARCHAR" />
+    <result column="user_introduce" property="userIntroduce" jdbcType="VARCHAR" />
+    <result column="user_account_state" property="userAccountState" jdbcType="INTEGER" />
+    <result column="user_regist_date" property="userRegistDate" jdbcType="TIMESTAMP" />
+    <result column="user_update_date" property="userUpdateDate" jdbcType="TIMESTAMP" />
+    <result column="user_last_login_date" property="userLastLoginDate" jdbcType="TIMESTAMP" />
+    <result column="user_last_logout_date" property="userLastLogoutDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+
+
+
+  <sql id="Base_Column_List" >
+    user_id, user_name, user_password, user_nick_name, user_age, user_gender, user_birth, 
+    user_email, user_qq_number, user_wechat_account_name, user_head_icon_url, user_introduce, 
+    user_account_state, user_regist_date, user_update_date, user_last_login_date, user_last_logout_date
+  </sql>
+
+    <sql id="select_list_column_List" >
+    user_id, user_name, user_age, user_gender, user_birth,
+    user_account_state, user_regist_date
+  </sql>
+
+    <select id="selectList" parameterType="com.fgchain.main.module.front.login.entity.User" resultMap="BaseResultMap">
+        select
+        <include refid="select_list_column_List" />
+        from t_user
+        <trim prefix="where" prefixOverrides="AND|OR">
+            <if test="userName != null and userName != ''" >
+                and user_name = #{userName,jdbcType=VARCHAR}
+            </if>
+            <if test="userAccountState != null and userAccountState != ''" >
+                and user_account_state like concat('%', #{userAccountState,jdbcType=VARCHAR} , '%')
+            </if>
+        </trim>
+        order by user_regist_date desc
+    </select>
+
+  <select id="selectByPrimaryKey"
+          parameterType="java.lang.Long"
+          resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+
+
+
+    <select id="selectByUsernameAndPassword"
+            resultMap="BaseResultMap" >
+
+        select user_name , user_password
+        from t_user
+        where user_name = #{username} and user_password =#{password}
+    </select>
+
+
+    <select id="selectByUsername"
+            parameterType="java.lang.String"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_user
+        where user_name = #{username}
+
+    </select>
+
+
+      <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from t_user
+        where user_id = #{userId,jdbcType=BIGINT}
+      </delete>
+
+
+
+
+  <insert id="insert" parameterType="com.fgchain.main.module.front.login.entity.User" >
+    insert into t_user (user_id, user_name, user_password, 
+      user_nick_name, user_age, user_gender, 
+      user_birth, user_email, user_qq_number, 
+      user_wechat_account_name, user_head_icon_url, 
+      user_introduce, user_account_state, user_regist_date, 
+      user_update_date, user_last_login_date, 
+      user_last_logout_date)
+    values (#{userId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR},
+      #{userNickName,jdbcType=VARCHAR}, #{userAge,jdbcType=INTEGER}, #{userGender,jdbcType=INTEGER}, 
+      #{userBirth,jdbcType=TIMESTAMP}, #{userEmail,jdbcType=VARCHAR}, #{userQqNumber,jdbcType=VARCHAR}, 
+      #{userWechatAccountName,jdbcType=VARCHAR}, #{userHeadIconUrl,jdbcType=VARCHAR}, 
+      #{userIntroduce,jdbcType=VARCHAR}, #{userAccountState,jdbcType=INTEGER}, #{userRegistDate,jdbcType=TIMESTAMP}, 
+      #{userUpdateDate,jdbcType=TIMESTAMP}, #{userLastLoginDate,jdbcType=TIMESTAMP}, 
+      #{userLastLogoutDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fgchain.main.module.front.login.entity.User" >
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="userPassword != null" >
+        user_password,
+      </if>
+      <if test="userNickName != null" >
+        user_nick_name,
+      </if>
+      <if test="userAge != null" >
+        user_age,
+      </if>
+      <if test="userGender != null" >
+        user_gender,
+      </if>
+      <if test="userBirth != null" >
+        user_birth,
+      </if>
+      <if test="userEmail != null" >
+        user_email,
+      </if>
+      <if test="userQqNumber != null" >
+        user_qq_number,
+      </if>
+      <if test="userWechatAccountName != null" >
+        user_wechat_account_name,
+      </if>
+      <if test="userHeadIconUrl != null" >
+        user_head_icon_url,
+      </if>
+      <if test="userIntroduce != null" >
+        user_introduce,
+      </if>
+      <if test="userAccountState != null" >
+        user_account_state,
+      </if>
+      <if test="userRegistDate != null" >
+        user_regist_date,
+      </if>
+      <if test="userUpdateDate != null" >
+        user_update_date,
+      </if>
+      <if test="userLastLoginDate != null" >
+        user_last_login_date,
+      </if>
+      <if test="userLastLogoutDate != null" >
+        user_last_logout_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null" >
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickName != null" >
+        #{userNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="userAge != null" >
+        #{userAge,jdbcType=INTEGER},
+      </if>
+      <if test="userGender != null" >
+        #{userGender,jdbcType=INTEGER},
+      </if>
+      <if test="userBirth != null" >
+        #{userBirth,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userEmail != null" >
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userQqNumber != null" >
+        #{userQqNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userWechatAccountName != null" >
+        #{userWechatAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="userHeadIconUrl != null" >
+        #{userHeadIconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="userIntroduce != null" >
+        #{userIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="userAccountState != null" >
+        #{userAccountState,jdbcType=INTEGER},
+      </if>
+      <if test="userRegistDate != null" >
+        #{userRegistDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userUpdateDate != null" >
+        #{userUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userLastLoginDate != null" >
+        #{userLastLoginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userLastLogoutDate != null" >
+        #{userLastLogoutDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.fgchain.main.module.front.login.entity.User" >
+    update t_user
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null" >
+        user_password = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickName != null" >
+        user_nick_name = #{userNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="userAge != null" >
+        user_age = #{userAge,jdbcType=INTEGER},
+      </if>
+      <if test="userGender != null" >
+        user_gender = #{userGender,jdbcType=INTEGER},
+      </if>
+      <if test="userBirth != null" >
+        user_birth = #{userBirth,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userEmail != null" >
+        user_email = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userQqNumber != null" >
+        user_qq_number = #{userQqNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userWechatAccountName != null" >
+        user_wechat_account_name = #{userWechatAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="userHeadIconUrl != null" >
+        user_head_icon_url = #{userHeadIconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="userIntroduce != null" >
+        user_introduce = #{userIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="userAccountState != null" >
+        user_account_state = #{userAccountState,jdbcType=INTEGER},
+      </if>
+      <if test="userRegistDate != null" >
+        user_regist_date = #{userRegistDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userUpdateDate != null" >
+        user_update_date = #{userUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userLastLoginDate != null" >
+        user_last_login_date = #{userLastLoginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userLastLogoutDate != null" >
+        user_last_logout_date = #{userLastLogoutDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fgchain.main.module.front.login.entity.User" >
+    update t_user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_password = #{userPassword,jdbcType=VARCHAR},
+      user_nick_name = #{userNickName,jdbcType=VARCHAR},
+      user_age = #{userAge,jdbcType=INTEGER},
+      user_gender = #{userGender,jdbcType=INTEGER},
+      user_birth = #{userBirth,jdbcType=TIMESTAMP},
+      user_email = #{userEmail,jdbcType=VARCHAR},
+      user_qq_number = #{userQqNumber,jdbcType=VARCHAR},
+      user_wechat_account_name = #{userWechatAccountName,jdbcType=VARCHAR},
+      user_head_icon_url = #{userHeadIconUrl,jdbcType=VARCHAR},
+      user_introduce = #{userIntroduce,jdbcType=VARCHAR},
+      user_account_state = #{userAccountState,jdbcType=INTEGER},
+      user_regist_date = #{userRegistDate,jdbcType=TIMESTAMP},
+      user_update_date = #{userUpdateDate,jdbcType=TIMESTAMP},
+      user_last_login_date = #{userLastLoginDate,jdbcType=TIMESTAMP},
+      user_last_logout_date = #{userLastLogoutDate,jdbcType=TIMESTAMP}
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+</mapper>

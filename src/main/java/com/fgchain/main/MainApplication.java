@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan({
-        "com.fgchain.main.module.front.login",
+        "com.fgchain.main.module",
         "com.fgchain.main.config"
 })
 @MapperScan({
