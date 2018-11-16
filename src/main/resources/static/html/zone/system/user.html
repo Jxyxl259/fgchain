@@ -3,14 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>zone_system_user</title>
+    <link th:href="@{/css/system_user.css}" href="../../../css/zone/iframe_content.css" rel="stylesheet">
     <link th:href="@{/css/system_user.css}" href="../../../css/zone/system/system_user.css" rel="stylesheet">
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script th:href="@{/js/common.js}" src="../../../js/common.js"></script>
+    <script th:href="@{/js/zone/system/user.js}" src="../../../js/zone/system/user.js"></script>
 </head>
 <body id="zone_iframe_common">
+    <div id="iframe_content_container_div" class="container iframe_content_container no_padding">
+        <div class="row offset_margin">
+            <!-- 条件搜索区域 -->
+            <div id="condition_search_area_div" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 condition_search_area less_padding">
+                <form id="condition_search_form" class="top_search_form" role="form">
+                    <div class="form-group search_item_group">
+                        <label for="user_name">用户名称</label>
+                        <input type="text" class="form-control condition_search_input" id="user_name" placeholder="用户名称">
+                    </div>
+                    <div class="form-group search_item_group">
+                        <label for="user_name">账户状态</label>
+                        <input type="text" class="form-control condition_search_input" id="user_account_state" placeholder="账户状态">
+                    </div>
+                    <button type="submit" class="btn btn-success btn-xs">查询</button>
+                </form>
+            </div>
+            <!-- 功能按钮区域 -->
+            <div id="btn_area_div" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 btn_area no_padding">
+                <!-- 分页配置项 -->
+                <span>
+                    <span>每页显示&nbsp;&nbsp;
+                        <select>
+                            <option>10</option>
+                            <option>20</option>
+                            <option>50</option>
+                        </select>&nbsp;&nbsp;条记录
+                    </span>
+                    <!-- 列表编辑按钮组 -->
+                    <span class="list_btn_group_span">
+                        <button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-plus"></span>新增</button>
+                        <button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span>编辑</button>
+                        <button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span>删除</button>
+                    </span>
+                </span>
+            </div>
+            <!-- 列表区域 -->
+            <div id="list_area_div" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 list_area">
 
+            </div>
+            <!-- 分页信息区域 -->
+            <div id="pagination_area_div" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pagination_area">
+
+            </div>
+        </div>
+    </div>
 </body>
 </html>
