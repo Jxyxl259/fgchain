@@ -1,3 +1,7 @@
 div.no_left_padding { padding-left: 0px}
 div.no_right_padding { padding-right: 0px}
 iframe { border-width: 1px; width: 100%; height:500px }
+
+/* 左侧菜单收缩 */
+div.menu_shrink{  width:45px;padding-right:0px;margin-right:10px;margin-left:3px  }
+div.iframe_expansion{ width: 95% }
