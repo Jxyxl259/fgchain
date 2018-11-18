@@ -1,7 +1,7 @@
 package com.fgchain.main.module.front.login.controller;
 
-import com.fgchain.main.module.common.GlobalMessageEnum;
-import com.fgchain.main.module.common.RequestResult;
+import com.fgchain.main.common.GlobalMessageEnum;
+import com.fgchain.main.common.RequestResult;
 import com.fgchain.main.module.front.login.entity.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -45,19 +45,19 @@ public class LoginController {
         } catch (ExcessiveAttemptsException e) {
             result.setSuccess(false);
             result.setT(false);
-            result.setResultMsg(GlobalMessageEnum.EXCESSIVE_LOGIN_TYR.getCommon());
+                result.setMessage(GlobalMessageEnum.EXCESSIVE_LOGIN_TYR.getMessage());
         } catch (UnknownAccountException e) {
             result.setSuccess(false);
             result.setT(false);
-            result.setResultMsg(GlobalMessageEnum.NO_SUCH_ACCOUNT.getCommon());
+            result.setMessage(GlobalMessageEnum.NO_SUCH_ACCOUNT.getMessage());
         } catch (CredentialsException e){
             result.setSuccess(false);
             result.setT(false);
-            result.setResultMsg(GlobalMessageEnum.ERROR_USERNAME_OR_PASSWORD.getCommon());
+            result.setMessage(GlobalMessageEnum.ERROR_USERNAME_OR_PASSWORD.getMessage());
         } catch (AuthenticationException e){
             result.setSuccess(false);
             result.setT(false);
-            result.setResultMsg(GlobalMessageEnum.AUTHENTICATION_ERROR.getCommon());
+            result.setMessage(GlobalMessageEnum.AUTHENTICATION_ERROR.getMessage());
         }
 
         return result;

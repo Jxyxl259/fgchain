@@ -1,8 +1,8 @@
 package com.fgchain.main.module.front.login.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.fgchain.main.module.common.RequestResult;
-import com.fgchain.main.module.common.RequestResultFactory;
+import com.fgchain.main.common.RequestResult;
+import com.fgchain.main.common.RequestResultFactory;
 import com.fgchain.main.module.front.login.entity.User;
 import com.fgchain.main.module.front.login.service.UserService;
 import org.slf4j.Logger;

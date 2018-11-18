@@ -11,7 +11,7 @@ import java.util.List;
  * @Date 2018\11\16 0016 14:41
  * @Version 1.0.0
  */
-public class PageResult<I> extends BaseResult{
+public class PageResult<I> {
 
     /** 总条数 */
     private Long recordsTotal;
@@ -31,54 +31,13 @@ public class PageResult<I> extends BaseResult{
     public PageResult() {
     }
 
-    public PageResult(Boolean success, Page<I> page, GlobalMessageEnum messageEnum) {
-        this.success = success;
-        this.statusCode = messageEnum.getStatus_code();
+    public PageResult(Page<I> page) {
         this.datas = page.getResult();
         this.pageNum = page.getPageNum();
         this.pages = page.getPages();
         this.pageSize = page.getPageSize();
         this.recordsTotal = page.getTotal();
 
-    }
-
-    public PageResult(Page<I> page, Boolean success, String statusCode, String message) {
-        this.success = success;
-        this.statusCode = statusCode;
-        this.message = message;
-        this.datas = page.getResult();
-        this.pageNum = page.getPageNum();
-        this.pages = page.getPages();
-        this.pageSize = page.getPageSize();
-        this.recordsTotal = page.getTotal();
-
-    }
-
-    public PageResult(Boolean success, String statusCode) {
-        super(success, statusCode);
-    }
-
-    public PageResult(Boolean success, String statusCode, List<I> datas) {
-        super(success, statusCode);
-        this.datas = datas;
-    }
-
-    public PageResult(Boolean success, String statusCode, String message, List<I> datas) {
-        super(success, statusCode, message);
-        this.datas = datas;
-    }
-
-    public PageResult(Boolean success, String statusCode, String message) {
-        super(success, statusCode, message);
-    }
-
-    public PageResult(Boolean success, String status, String statusCode, String message) {
-        super(success, status, statusCode, message);
-    }
-
-    public PageResult(Boolean success, String status, String statusCode, String message, List<I> datas) {
-        super(success, status, statusCode, message);
-        this.datas = datas;
     }
 
     public Long getRecordsTotal() {
