@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.fgchain.main.module.background.zone.system.entity.Menu" >
     <constructor >
       <arg column="menu_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="perm_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="menu_name" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="menu_level" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="menu_parent_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -14,21 +15,28 @@
       <arg column="menu_create_by" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
+
+
   <insert id="insert" parameterType="com.fgchain.main.module.background.zone.system.entity.Menu" >
-    insert into t_menu (menu_id, menu_name, menu_level, 
+    insert into t_menu (menu_id, perm_id, menu_name, menu_level,
       menu_parent_id, menu_order, menu_relative_url, 
       menu_absolute_url, menu_create_data, menu_create_by
       )
-    values (#{menuId,jdbcType=INTEGER}, #{menuName,jdbcType=VARCHAR}, #{menuLevel,jdbcType=INTEGER}, 
+    values (#{menuId,jdbcType=INTEGER}, #{permId,jdbcType=INTEGER}, #{menuName,jdbcType=VARCHAR}, #{menuLevel,jdbcType=INTEGER},
       #{menuParentId,jdbcType=INTEGER}, #{menuOrder,jdbcType=INTEGER}, #{menuRelativeUrl,jdbcType=VARCHAR}, 
       #{menuAbsoluteUrl,jdbcType=VARCHAR}, #{menuCreateData,jdbcType=TIMESTAMP}, #{menuCreateBy,jdbcType=VARCHAR}
       )
   </insert>
+
+
   <insert id="insertSelective" parameterType="com.fgchain.main.module.background.zone.system.entity.Menu" >
     insert into t_menu
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="menuId != null" >
         menu_id,
+      </if>
+      <if test="permId != null" >
+          perm_id,
       </if>
       <if test="menuName != null" >
         menu_name,
@@ -59,6 +67,9 @@
       <if test="menuId != null" >
         #{menuId,jdbcType=INTEGER},
       </if>
+        <if test="permId != null" >
+            #{permId,jdbcType=INTEGER},
+        </if>
       <if test="menuName != null" >
         #{menuName,jdbcType=VARCHAR},
       </if>
