@@ -7,7 +7,13 @@ div.search_item_group {display: inline-block; margin-bottom: 0px}
 div.condition_search_area{ width: 100%; height: 60px; background-color: ivory}
 #iframe_content_container_div{width:100%}
 div.iframe_content_container{margin: 0px; padding: 5px}
-span.list_btn_group_span{margin-left: 600px}
+span.list_btn_group_span{margin-right: 50px; float: right}
 table.date_table{ margin-bottom: 5px}
+
+/* 分页相关 */
 #pagination_area_div{ height:30px}
-ul.pagination_area_ul{margin:0px}
+ul.pagination_area_ul{ display: inline; margin:0px}
+#pagination_info_span { display: inline-block;float: left;}
+#pagination_tag_div {float: right; margin-right: 50px;}
+#pagination_tag_div input{width: 30px;height: 20px;}
+#pagination_tag_div b{ line-height: 30px; margin-left: 50px;}

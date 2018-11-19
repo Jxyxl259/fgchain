@@ -1,11 +1,11 @@
-package com.fgchain.main.module.background.zone.system.user.controller;
+package com.fgchain.main.module.background.zone.system.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.fgchain.main.common.PageResult;
 import com.fgchain.main.common.RequestResult;
 import com.fgchain.main.common.RequestResultFactory;
-import com.fgchain.main.module.background.zone.system.user.dto.UserDto;
-import com.fgchain.main.module.background.zone.system.user.service.AccountService;
+import com.fgchain.main.module.background.zone.system.dto.UserDto;
+import com.fgchain.main.module.background.zone.system.service.AccountService;
 import com.fgchain.main.module.front.login.entity.User;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 import static com.fgchain.main.common.GlobalMessageEnum.EMPTY_DATA;
-import static com.fgchain.main.common.GlobalMessageEnum.SUCCESS;
 
 /**
  * @ClassName UserController

@@ -1,8 +1,8 @@
-package com.fgchain.main.module.background.zone.system.user.service.impl;
+package com.fgchain.main.module.background.zone.system.service.impl;
 
-import com.fgchain.main.module.background.zone.system.user.dao.AccountMapper;
-import com.fgchain.main.module.background.zone.system.user.dto.UserDto;
-import com.fgchain.main.module.background.zone.system.user.service.AccountService;
+import com.fgchain.main.module.background.zone.system.dao.AccountMapper;
+import com.fgchain.main.module.background.zone.system.dto.UserDto;
+import com.fgchain.main.module.background.zone.system.service.AccountService;
 import com.fgchain.main.module.front.login.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,6 +1,6 @@
-package com.fgchain.main.module.background.zone.system.user.service;
+package com.fgchain.main.module.background.zone.system.service;
 
-import com.fgchain.main.module.background.zone.system.user.dto.UserDto;
+import com.fgchain.main.module.background.zone.system.dto.UserDto;
 import com.fgchain.main.module.front.login.entity.User;
 
 import java.util.List;

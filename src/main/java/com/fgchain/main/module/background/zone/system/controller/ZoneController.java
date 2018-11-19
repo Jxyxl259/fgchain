@@ -1,4 +1,4 @@
-package com.fgchain.main.module.background.zone.controller;
+package com.fgchain.main.module.background.zone.system.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

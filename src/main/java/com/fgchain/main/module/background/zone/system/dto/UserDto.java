@@ -1,4 +1,4 @@
-package com.fgchain.main.module.background.zone.system.user.dto;
+package com.fgchain.main.module.background.zone.system.dto;
 
 import com.fgchain.main.common.BaseDto;
 

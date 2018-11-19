@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fgchain.main.module.background.zone.system.dao.RoleMapper" >
+  <resultMap id="BaseResultMap" type="com.fgchain.main.module.background.zone.system.entity.Role" >
+    <constructor >
+      <idArg column="role_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="role_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="role_create_data" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="role_create_by" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    role_id, role_name, role_create_data, role_create_by
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_role
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectAllRoles" resultMap="BaseResultMap">
+    select
+      <include refid="Base_Column_List" />
+    from t_role
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_role
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fgchain.main.module.background.zone.system.entity.Role" >
+    insert into t_role (role_id, role_name, role_create_data, 
+      role_create_by)
+    values (#{roleId,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{roleCreateData,jdbcType=TIMESTAMP}, 
+      #{roleCreateBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fgchain.main.module.background.zone.system.entity.Role" >
+    insert into t_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="roleName != null" >
+        role_name,
+      </if>
+      <if test="roleCreateData != null" >
+        role_create_data,
+      </if>
+      <if test="roleCreateBy != null" >
+        role_create_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="roleName != null" >
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleCreateData != null" >
+        #{roleCreateData,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roleCreateBy != null" >
+        #{roleCreateBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fgchain.main.module.background.zone.system.entity.Role" >
+    update t_role
+    <set >
+      <if test="roleName != null" >
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleCreateData != null" >
+        role_create_data = #{roleCreateData,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roleCreateBy != null" >
+        role_create_by = #{roleCreateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fgchain.main.module.background.zone.system.entity.Role" >
+    update t_role
+    set role_name = #{roleName,jdbcType=VARCHAR},
+      role_create_data = #{roleCreateData,jdbcType=TIMESTAMP},
+      role_create_by = #{roleCreateBy,jdbcType=VARCHAR}
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </update>
+</mapper>

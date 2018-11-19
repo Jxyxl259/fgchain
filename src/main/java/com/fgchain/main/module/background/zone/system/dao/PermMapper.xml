@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fgchain.main.module.background.zone.system.dao.PermMapper" >
+  <resultMap id="BaseResultMap" type="com.fgchain.main.module.background.zone.system.entity.Perm" >
+    <constructor >
+      <idArg column="perm_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="perm_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="perm_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="perm_type" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="perm_create_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="perm_create_by" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    perm_id, perm_name, perm_url, perm_type, perm_create_date, perm_create_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_perm
+    where perm_id = #{permId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_perm
+    where perm_id = #{permId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fgchain.main.module.background.zone.system.entity.Perm" >
+    insert into t_perm (perm_id, perm_name, perm_url, 
+      perm_type, perm_create_date, perm_create_by
+      )
+    values (#{permId,jdbcType=INTEGER}, #{permName,jdbcType=VARCHAR}, #{permUrl,jdbcType=VARCHAR}, 
+      #{permType,jdbcType=INTEGER}, #{permCreateDate,jdbcType=TIMESTAMP}, #{permCreateBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fgchain.main.module.background.zone.system.entity.Perm" >
+    insert into t_perm
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="permId != null" >
+        perm_id,
+      </if>
+      <if test="permName != null" >
+        perm_name,
+      </if>
+      <if test="permUrl != null" >
+        perm_url,
+      </if>
+      <if test="permType != null" >
+        perm_type,
+      </if>
+      <if test="permCreateDate != null" >
+        perm_create_date,
+      </if>
+      <if test="permCreateBy != null" >
+        perm_create_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="permId != null" >
+        #{permId,jdbcType=INTEGER},
+      </if>
+      <if test="permName != null" >
+        #{permName,jdbcType=VARCHAR},
+      </if>
+      <if test="permUrl != null" >
+        #{permUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="permType != null" >
+        #{permType,jdbcType=INTEGER},
+      </if>
+      <if test="permCreateDate != null" >
+        #{permCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="permCreateBy != null" >
+        #{permCreateBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fgchain.main.module.background.zone.system.entity.Perm" >
+    update t_perm
+    <set >
+      <if test="permName != null" >
+        perm_name = #{permName,jdbcType=VARCHAR},
+      </if>
+      <if test="permUrl != null" >
+        perm_url = #{permUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="permType != null" >
+        perm_type = #{permType,jdbcType=INTEGER},
+      </if>
+      <if test="permCreateDate != null" >
+        perm_create_date = #{permCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="permCreateBy != null" >
+        perm_create_by = #{permCreateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where perm_id = #{permId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fgchain.main.module.background.zone.system.entity.Perm" >
+    update t_perm
+    set perm_name = #{permName,jdbcType=VARCHAR},
+      perm_url = #{permUrl,jdbcType=VARCHAR},
+      perm_type = #{permType,jdbcType=INTEGER},
+      perm_create_date = #{permCreateDate,jdbcType=TIMESTAMP},
+      perm_create_by = #{permCreateBy,jdbcType=VARCHAR}
+    where perm_id = #{permId,jdbcType=INTEGER}
+  </update>
+</mapper>

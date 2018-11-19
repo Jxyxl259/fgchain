@@ -2,7 +2,6 @@ package com.fgchain.main.config.shiro;
 
 import com.fgchain.main.module.front.login.entity.User;
 import com.fgchain.main.module.front.login.service.UserService;
-import com.sun.org.apache.xpath.internal.SourceTree;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.crypto.hash.SimpleHash;
@@ -11,7 +10,6 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @description: shiro认证/授权功能实现类

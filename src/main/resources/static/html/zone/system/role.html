@@ -4,70 +4,38 @@
     <meta charset="UTF-8">
     <title>zone_system_user</title>
     <link th:href="@{/css/system_user.css}" href="../../../css/zone/iframe_content.css" rel="stylesheet">
-    <link th:href="@{/css/system_user.css}" href="../../../css/zone/system/system_user.css" rel="stylesheet">
+    <link th:href="@{/css/system_user.css}" href="../../../css/zone/system/system_role.css" rel="stylesheet">
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script th:href="@{/js/common.js}" src="../../../js/common.js"></script>
-    <script th:href="@{/js/zone/system/user.js}" src="../../../js/zone/system/user.js"></script>
+    <script th:href="@{/js/zone/system/user.js}" src="../../../js/zone/system/role.js"></script>
 </head>
 <body id="zone_iframe_common">
     <div id="iframe_content_container_div" class="container iframe_content_container no_padding">
         <div class="row offset_margin">
-            <!-- 条件搜索区域 -->
-            <div id="condition_search_area_div" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 condition_search_area less_padding">
-                <form id="condition_search_form" class="top_search_form" role="form">
-                    <div class="form-group search_item_group">
-                        <label for="search_user_name">用户名称</label>
-                        <input type="text" class="form-control condition_search_input" id="search_user_name" name="userName" placeholder="用户名称">
+            <!-- 角色操控按钮 新增(弹出模态框)/删除/修改 -->
+            <div id="role_manipulate_btn_container_div" class="btn_area col-xs-12 col-sm-12 col-md-12 col-lg-12 condition_search_area less_padding" >
+
+            </div>
+        </div>
+        <div class="row offset_margin">
+            <div class="row offset_margin">
+                <!-- 角色列表 -->
+                <div id="role_list_container_div" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 less_padding" >
+                    <table id="data_table" class="date_table table table-striped">
+                        <!--<caption>条纹表格布局</caption>-->
+
+                    </table>
+                </div>
+                <!-- 为角色分配权限 -->
+                <div id="perm_allocation_container_div" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 less_padding">
+                    <!-- z-tree组件分配权限 -->
+                    <div>
+
                     </div>
-                    <div class="form-group search_item_group">
-                        <label for="search_user_account_state">账户状态</label>
-                        <input type="text" class="form-control condition_search_input" id="search_user_account_state" name="userAccountState"  placeholder="账户状态">
-                    </div>
-                    <button type="submit" class="btn btn-success btn-xs">查询</button>
-                </form>
-            </div>
-            <!-- 功能按钮区域 -->
-            <div id="btn_area_div" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 btn_area no_padding">
-                <!-- 分页配置项 -->
-                <span>
-                    <span>每页显示&nbsp;&nbsp;
-                        <select>
-                            <option value="9">9</option>
-                            <option value="20">20</option>
-                            <option value="50">50</option>
-                        </select>&nbsp;&nbsp;条记录
-                    </span>
-                    <!-- 列表编辑按钮组 -->
-                    <span class="list_btn_group_span">
-                        <button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-plus"></span>新增</button>
-                        <button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span>编辑</button>
-                        <button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span>删除</button>
-                    </span>
-                </span>
-            </div>
-
-            <!-- 列表区域 -->
-            <div id="list_area_div" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 list_area">
-                <table id="data_table" class="date_table table table-striped">
-                    <!--<caption>条纹表格布局</caption>-->
-
-
-                </table>
-            </div>
-            <!-- 分页信息区域 -->
-            <div id="pagination_area_div" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pagination_area">
-                <ul class="pagination_area_ul pagination pagination-sm">
-                    <li><a href="#">&laquo;</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&raquo;</a></li>
-                </ul>
+                </div>
             </div>
         </div>
     </div>

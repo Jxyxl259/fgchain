@@ -17,8 +17,8 @@ var data_format = {
         // user_regist_date 列
         {"ext": false, "col_name": "userRegistDate", "col_header": "注册日期", "width": "20%"},
         // 操作按钮列
-        {"ext": true, "col_header": "操作", "width": "25%", "html_content": "<button>删除</button><button>编辑</button><button>详情</button>"},
-        // 附加隐藏列
+        {"ext": true, "col_header": "操作", "width": "20%", "html_content": "<button class='btn btn-info btn-xs'>角色分配</button>&nbsp;&nbsp;<button class='btn btn-danger btn-xs'>删除</button>"},
+        // user_role 用户角色列
         {"ext":false, "col_name": "userId", "display": "none"},
         // 附加隐藏列
         {"ext":false, "col_name": "userId", "display": "none"}
@@ -57,9 +57,8 @@ var fetch_table_data = function(page_num, page_size){
                 //console.log(result.t.pageNum);
 
                 var table_html = init_data_table(data_format, result.t.datas);
-                console.log(table_html)
+                var pagination_html = fill_pagination_info(result.t);
                 $("#data_table").html(table_html);
-                //full_pagination_info(result.paginationInfo);
             }else{
                 console.log(result);
                 console.log("未能成功获取到数据");

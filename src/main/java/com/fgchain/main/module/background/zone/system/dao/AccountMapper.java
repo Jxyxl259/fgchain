@@ -1,4 +1,4 @@
-package com.fgchain.main.module.background.zone.system.user.dao;
+package com.fgchain.main.module.background.zone.system.dao;
 
 import com.fgchain.main.module.front.login.entity.User;
 

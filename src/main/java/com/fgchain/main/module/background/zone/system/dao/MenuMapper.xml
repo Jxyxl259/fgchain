@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fgchain.main.module.background.zone.system.dao.MenuMapper" >
+  <resultMap id="BaseResultMap" type="com.fgchain.main.module.background.zone.system.entity.Menu" >
+    <constructor >
+      <arg column="menu_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="menu_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="menu_level" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="menu_parent_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="menu_order" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="menu_relative_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="menu_absolute_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="menu_create_data" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="menu_create_by" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.fgchain.main.module.background.zone.system.entity.Menu" >
+    insert into t_menu (menu_id, menu_name, menu_level, 
+      menu_parent_id, menu_order, menu_relative_url, 
+      menu_absolute_url, menu_create_data, menu_create_by
+      )
+    values (#{menuId,jdbcType=INTEGER}, #{menuName,jdbcType=VARCHAR}, #{menuLevel,jdbcType=INTEGER}, 
+      #{menuParentId,jdbcType=INTEGER}, #{menuOrder,jdbcType=INTEGER}, #{menuRelativeUrl,jdbcType=VARCHAR}, 
+      #{menuAbsoluteUrl,jdbcType=VARCHAR}, #{menuCreateData,jdbcType=TIMESTAMP}, #{menuCreateBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fgchain.main.module.background.zone.system.entity.Menu" >
+    insert into t_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="menuId != null" >
+        menu_id,
+      </if>
+      <if test="menuName != null" >
+        menu_name,
+      </if>
+      <if test="menuLevel != null" >
+        menu_level,
+      </if>
+      <if test="menuParentId != null" >
+        menu_parent_id,
+      </if>
+      <if test="menuOrder != null" >
+        menu_order,
+      </if>
+      <if test="menuRelativeUrl != null" >
+        menu_relative_url,
+      </if>
+      <if test="menuAbsoluteUrl != null" >
+        menu_absolute_url,
+      </if>
+      <if test="menuCreateData != null" >
+        menu_create_data,
+      </if>
+      <if test="menuCreateBy != null" >
+        menu_create_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="menuId != null" >
+        #{menuId,jdbcType=INTEGER},
+      </if>
+      <if test="menuName != null" >
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuLevel != null" >
+        #{menuLevel,jdbcType=INTEGER},
+      </if>
+      <if test="menuParentId != null" >
+        #{menuParentId,jdbcType=INTEGER},
+      </if>
+      <if test="menuOrder != null" >
+        #{menuOrder,jdbcType=INTEGER},
+      </if>
+      <if test="menuRelativeUrl != null" >
+        #{menuRelativeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="menuAbsoluteUrl != null" >
+        #{menuAbsoluteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="menuCreateData != null" >
+        #{menuCreateData,jdbcType=TIMESTAMP},
+      </if>
+      <if test="menuCreateBy != null" >
+        #{menuCreateBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
