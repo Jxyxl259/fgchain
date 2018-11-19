@@ -39,8 +39,9 @@ var fetch_table_data = function(page_num, page_size){
         dataType:"json",
         success: function(result){
             if(result.success){
-                var table_html = init_data_table(data_format, result.t.datas);
-                $("#data_table").html(table_html);
+                var table_html = "<caption><b>全部角色</b></caption>";
+                table_html += init_data_table(data_format, result.t.datas);
+                $("#data_table").html( table_html);
             }else{
                 console.log(result);
                 console.log("未能成功获取到数据");

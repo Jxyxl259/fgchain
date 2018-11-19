@@ -7,12 +7,13 @@
       <arg column="perm_name" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="perm_url" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="perm_type" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="menu_Id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="perm_create_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="perm_create_by" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    perm_id, perm_name, perm_url, perm_type, perm_create_date, perm_create_by
+    perm_id, perm_name, perm_url, perm_type, menu_id, perm_create_date, perm_create_by
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -20,16 +21,18 @@
     from t_perm
     where perm_id = #{permId,jdbcType=INTEGER}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_perm
     where perm_id = #{permId,jdbcType=INTEGER}
   </delete>
+
   <insert id="insert" parameterType="com.fgchain.main.module.background.zone.system.entity.Perm" >
     insert into t_perm (perm_id, perm_name, perm_url, 
-      perm_type, perm_create_date, perm_create_by
+      perm_type, menu_id, perm_create_date, perm_create_by
       )
     values (#{permId,jdbcType=INTEGER}, #{permName,jdbcType=VARCHAR}, #{permUrl,jdbcType=VARCHAR}, 
-      #{permType,jdbcType=INTEGER}, #{permCreateDate,jdbcType=TIMESTAMP}, #{permCreateBy,jdbcType=VARCHAR}
+      #{permType,jdbcType=INTEGER}, #{permType,jdbcType=INTEGER}, #{permCreateDate,jdbcType=TIMESTAMP}, #{permCreateBy,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.fgchain.main.module.background.zone.system.entity.Perm" >
@@ -46,6 +49,9 @@
       </if>
       <if test="permType != null" >
         perm_type,
+      </if>
+      <if test="menuId != null" >
+        menu_id,
       </if>
       <if test="permCreateDate != null" >
         perm_create_date,
@@ -67,6 +73,9 @@
       <if test="permType != null" >
         #{permType,jdbcType=INTEGER},
       </if>
+      <if test="menuId != null" >
+        #{menuId,jdbcType=INTEGER},
+      </if>
       <if test="permCreateDate != null" >
         #{permCreateDate,jdbcType=TIMESTAMP},
       </if>
@@ -87,6 +96,9 @@
       <if test="permType != null" >
         perm_type = #{permType,jdbcType=INTEGER},
       </if>
+      <if test="menuId != null" >
+        perm_type = #{menuId,jdbcType=INTEGER},
+      </if>
       <if test="permCreateDate != null" >
         perm_create_date = #{permCreateDate,jdbcType=TIMESTAMP},
       </if>
@@ -96,11 +108,15 @@
     </set>
     where perm_id = #{permId,jdbcType=INTEGER}
   </update>
+
+
+
   <update id="updateByPrimaryKey" parameterType="com.fgchain.main.module.background.zone.system.entity.Perm" >
     update t_perm
     set perm_name = #{permName,jdbcType=VARCHAR},
       perm_url = #{permUrl,jdbcType=VARCHAR},
       perm_type = #{permType,jdbcType=INTEGER},
+      menu_id = #{menuId,jdbcType=INTEGER},
       perm_create_date = #{permCreateDate,jdbcType=TIMESTAMP},
       perm_create_by = #{permCreateBy,jdbcType=VARCHAR}
     where perm_id = #{permId,jdbcType=INTEGER}

@@ -11,15 +11,18 @@ public class Perm {
 
     private Integer permType;
 
+    private Integer menuId;
+
     private Date permCreateDate;
 
     private String permCreateBy;
 
-    public Perm(Integer permId, String permName, String permUrl, Integer permType, Date permCreateDate, String permCreateBy) {
+    public Perm(Integer permId, String permName, String permUrl, Integer permType, Integer menuId, Date permCreateDate, String permCreateBy) {
         this.permId = permId;
         this.permName = permName;
         this.permUrl = permUrl;
         this.permType = permType;
+        this.menuId = menuId;
         this.permCreateDate = permCreateDate;
         this.permCreateBy = permCreateBy;
     }
@@ -58,6 +61,14 @@ public class Perm {
 
     public void setPermType(Integer permType) {
         this.permType = permType;
+    }
+
+    public Integer getMenuId() {
+        return menuId;
+    }
+
+    public void setMenuId(Integer menuId) {
+        this.menuId = menuId;
     }
 
     public Date getPermCreateDate() {
