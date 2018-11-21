@@ -1,4 +1,4 @@
-package com.fgchain.main.common;
+package com.fgchain.main.common.enums;
 
 public enum GlobalMessageEnum {
     SUCCESS("000000", "操作成功"),

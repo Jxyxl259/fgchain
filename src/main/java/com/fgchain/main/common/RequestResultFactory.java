@@ -1,5 +1,6 @@
 package com.fgchain.main.common;
 
+import com.fgchain.main.common.enums.GlobalMessageEnum;
 import org.apache.commons.lang3.StringUtils;
 
 /**

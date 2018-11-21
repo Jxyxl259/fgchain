@@ -1,4 +1,4 @@
-body{
+#login_body{
     margin:0px;
     height:800px;
     font-family :  "microsoft yahei", "times", "arial";
@@ -14,19 +14,46 @@ body{
     height: 500px;
 }
 
-#login_div{
+.login_div{
     float: right;
-    position: relative;
-    z-index: 5;
     width: 420px;
     height: 420px;
-    margin: 40px 150px 0px 0px;
-    background-color: transparent;
     font-size: 20px;
     border-radius: 20px;
 }
 
-#login_div table{
+/* 登录页面的form表单 外层 div样式 */
+#login_div{
+    float: right;
+    position: relative;
+    z-index: 5;
+    margin: 40px 150px 0px 0px;
+    background-color: transparent;
+}
+
+.vanish{
+    display:none ;
+}
+
+/* 登录表单的容器 */
+#login_form_container {
+    z-index: 50;
+    #display:none ;
+    position: fixed;
+    margin-left: 350px;
+    margin-top: 0px;
+    width: 420px;
+    height: 420px;
+}
+
+/* 主页面弹出 登录from表单 外层 div样式 */
+#login_from_div{
+    float: right;
+    margin: 0px;
+    background-color: darkgray;
+}
+
+div.login_div table{
     border-collapse:collapse;
     #border:1px solid red;
     #width: 100%;
@@ -75,7 +102,7 @@ tbody tr{
 
 
 
-#login_div table td{
+div.login_div table td{
     vertical-align:middle;
     #border:1px solid blue;
     #width:210px;

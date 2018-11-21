@@ -24,6 +24,9 @@ public class Menu {
 
     private String menuCreateBy;
 
+    public Menu() {
+    }
+
     public Menu(Integer menuId, Integer permId, String menuName, Integer menuLevel, Integer menuParentId, Integer menuOrder, String menuRelativeUrl, String menuAbsoluteUrl, Date menuCreateData, String menuCreateBy) {
         this.menuId = menuId;
         this.permId = permId;
@@ -37,8 +40,15 @@ public class Menu {
         this.menuCreateBy = menuCreateBy;
     }
 
-    public Menu() {
-        super();
+    public Menu(Integer menuId, Integer permId, String menuName, Integer menuLevel, Integer menuParentId, Integer menuOrder, String menuRelativeUrl, String menuAbsoluteUrl) {
+        this.menuId = menuId;
+        this.permId = permId;
+        this.menuName = menuName;
+        this.menuLevel = menuLevel;
+        this.menuParentId = menuParentId;
+        this.menuOrder = menuOrder;
+        this.menuRelativeUrl = menuRelativeUrl;
+        this.menuAbsoluteUrl = menuAbsoluteUrl;
     }
 
     public Integer getMenuId() {

@@ -1,6 +1,6 @@
 package com.fgchain.main.module.front.login.controller;
 
-import com.fgchain.main.common.GlobalMessageEnum;
+import com.fgchain.main.common.enums.GlobalMessageEnum;
 import com.fgchain.main.common.RequestResult;
 import com.fgchain.main.module.front.login.entity.User;
 import org.apache.shiro.SecurityUtils;

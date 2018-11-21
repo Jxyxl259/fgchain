@@ -7,12 +7,26 @@ package com.fgchain.main.common;
  * @Date 2018\11\16 0016 16:13
  * @Version 1.0.0
  */
-public class Constants {
+public interface Constants {
 
+    /**
+     * 无链接菜单（一级菜单）
+     */
+    Integer NO_LINK_MENU = 0;
 
-    //--------------------------------
-    public static String STATUS_SUCCESS = "success";
-    public static String STATUS_FAIL = "fail";
+    /**
+     * 根菜单
+     */
+    String ROOT_MENU = "root";
 
+    /**
+     * 一级菜单
+     */
+    Integer MENU_LV_1 = 1;
+
+    /**
+     * 二级菜单
+     */
+    Integer MENU_LV_2 = 2;
 
 }

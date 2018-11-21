@@ -1,6 +1,8 @@
 package com.fgchain.main.module.background.zone.system.service.impl;
 
 import com.fgchain.main.module.background.zone.system.dao.RoleMapper;
+import com.fgchain.main.module.background.zone.system.entity.Menu;
+import com.fgchain.main.module.background.zone.system.entity.Perm;
 import com.fgchain.main.module.background.zone.system.entity.Role;
 import com.fgchain.main.module.background.zone.system.service.RoleService;
 import org.slf4j.Logger;
@@ -28,5 +30,20 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public List<Role> getList() {
         return roleMapper.selectAllRoles();
+    }
+
+    /**
+     * 通过角色Id获取该角色的所有权限信息
+     * @param roleId
+     * @return
+     */
+    @Override
+    public List<Perm> getPermsByRoleId(Integer roleId) {
+        return roleMapper.selectPermsByRoleId(roleId);
+    }
+
+    @Override
+    public List<Menu> getMenuPermsByRoleId(Integer roleId) {
+        return roleMapper.selectMenuPermsByRoleId(roleId);
     }
 }

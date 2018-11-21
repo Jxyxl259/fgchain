@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">-->
     <title>Title</title>
-    <link th:href="@{/css/index.css}" rel="stylesheet">
-    <link th:href="@{/css/login_form.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" href="../css/index.css" rel="stylesheet">
+    <link th:href="@{/css/login.css}" href="../css/login.css" rel="stylesheet">
 
     <link href="../css/header.css" rel="stylesheet" type="text/css"/>
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -54,7 +54,7 @@
     <!-- 登录表单的容器 -->
     <div id="login_form_container" class="vanish">
         <!--<iframe id="login_form_iframe" class="middle_form_iframe " src="./front/fragement/login_form.html"></iframe>-->
-        <div id="login_div">
+        <div id="login_from_div" class="login_div">
             <form id="login_form" action="" method="post">
                 <table>
                     <thead>
