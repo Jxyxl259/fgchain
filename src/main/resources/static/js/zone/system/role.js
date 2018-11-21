@@ -120,23 +120,25 @@ var obj = {
             }
         };
 
-        var zNodes = [
-            {name:"test1", open:true, children:[
-                    {name:"test1_1"}, {name:"test1_2"}]},
-            {name:"test2", open:true, children:[
-                    {name:"test2_1"}, {name:"test2_2"}]}
-        ];
+        // var zNodes = [
+        //     {name:"test1", open:true, children:[
+        //             {name:"test1_1"}, {name:"test1_2"}]},
+        //     {name:"test2", open:true, children:[
+        //             {name:"test2_1"}, {name:"test2_2"}]}
+        // ];
 
         var zNodes = [];
 
         $.each(root_menu.childMenu, function(i, _lv_1){
-            zNodes[i]={name:_lv_1.nemuName, open:true};
+            zNodes[i]={name:_lv_1.menuName, open:true};
+            var lv_2_menus = [];
             $.each(_lv_1.childMenu, function(j, _lv_2){
-                zNodes[i].children={name:_lv_2.menuName};
+                lv_2_menus[j] = {name: _lv_2.menuName}
             })
+            zNodes[i].children = lv_2_menus;
         });
 
-
+        $.fn.zTree.init($("#menu_tree"), setting, zNodes);
     },
 };
 obj.init();
