@@ -61,7 +61,6 @@ public class MyShiroConfig{
      * @return
      */
     @Bean
-    @Autowired
     @ConditionalOnMissingBean(CacheManager.class)
     public CacheManager springCacheManagerWrapper(/*org.springframework.cache.ehcache.EhCacheCacheManager springCacheCacheManager*/){
 

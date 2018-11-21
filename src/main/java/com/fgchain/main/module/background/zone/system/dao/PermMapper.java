@@ -1,6 +1,9 @@
 package com.fgchain.main.module.background.zone.system.dao;
 
+import com.fgchain.main.module.background.zone.system.entity.Menu;
 import com.fgchain.main.module.background.zone.system.entity.Perm;
+
+import java.util.List;
 
 public interface PermMapper {
     int deleteByPrimaryKey(Integer permId);
@@ -14,4 +17,6 @@ public interface PermMapper {
     int updateByPrimaryKeySelective(Perm record);
 
     int updateByPrimaryKey(Perm record);
+
+    List<Menu> selectAllMenu();
 }

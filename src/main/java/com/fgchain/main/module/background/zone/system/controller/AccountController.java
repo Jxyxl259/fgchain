@@ -8,6 +8,7 @@ import com.fgchain.main.module.background.zone.system.dto.MenuDto;
 import com.fgchain.main.module.background.zone.system.dto.UserDto;
 import com.fgchain.main.module.background.zone.system.entity.Menu;
 import com.fgchain.main.module.background.zone.system.service.AccountService;
+import com.fgchain.main.module.background.zone.system.service.PermService;
 import com.fgchain.main.module.background.zone.system.service.RoleService;
 import com.fgchain.main.module.front.login.entity.User;
 import com.github.pagehelper.Page;
@@ -47,6 +48,8 @@ public class AccountController {
     private AccountService accountService;
     @Autowired
     private RoleService roleService;
+    @Autowired
+    private PermService permService;
 
     @RequestMapping(value = "/zone/sys/user/list", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
@@ -76,6 +79,7 @@ public class AccountController {
     public RequestResult<Map<String, Object>> getRolePermByRoleId(Integer roleId){
         log.info("getPermByRoleId, roleId={}", roleId);
         RequestResult result = RequestResultFactory.success();
+        List<Menu> allMenus = permService.allMenus();
 
         // 通过角色Id查询出该角色所拥有的全部菜单权限
         List<Menu> roleMenuPerms = roleService.getMenuPermsByRoleId(roleId);
