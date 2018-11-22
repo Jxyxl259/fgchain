@@ -50,7 +50,7 @@ public class RoleController {
 
     @RequestMapping(value="/zone/sys/role/list", method = POST, consumes = APPLICATION_JSON_VALUE)
     @ResponseBody
-    public RequestResult<PageResult<Role>> getUserList(@RequestBody BaseDto pagenationInfo){
+    public RequestResult<PageResult<Role>> getRoleList(@RequestBody BaseDto pagenationInfo){
         RequestResult<PageResult<Role>> result = null;
         Page<Role> page = PageHelper.startPage(1, Integer.MAX_VALUE);
         List<Role> list = roleService.getList();

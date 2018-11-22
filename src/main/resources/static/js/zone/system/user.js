@@ -17,7 +17,7 @@ var data_format = {
         // user_regist_date 列
         {"ext": false, "col_name": "userRegistDate", "col_header": "注册日期", "width": "20%"},
         // 操作按钮列
-        {"ext": true, "col_header": "操作", "width": "20%", "html_content": "<button class='btn btn-info btn-xs'>角色分配</button>&nbsp;&nbsp;<button class='btn btn-danger btn-xs'>删除</button>"},
+        {"ext": true, "col_header": "操作", "width": "20%", "html_content": "<button class='btn btn-info btn-xs' onclick='obj.assignRoleToUser(this)' data-toggle='modal' data-target='#roleAssign_modal'>角色分配</button>&nbsp;&nbsp;<button class='btn btn-danger btn-xs'>删除</button>"},
         // user_role 用户角色列
         {"ext":false, "col_name": "userId", "display": "none"},
         // 附加隐藏列
@@ -74,3 +74,37 @@ var fetch_table_data = function(page_num, page_size){
 
 };
 
+
+var obj = {
+
+    userId : null,
+    /**
+     * 为用户分配角色
+     * @param btn
+     */
+    assignRoleToUser : function(btn){
+        // 先获取到用户ID
+        var tdNodes = $(btn).parent().parent().children();
+        this.userId = $(tdNodes[0]).html();
+        // 弹出模态框
+        console.log("userId" + this.userId);
+
+        // 拉取所有角色信息(checkbox)
+        $.ajax({
+            type:"post",
+            url:"/zone/sys/role/list",
+            data:JSON.stringify({ pageNum: 1, pageSize: 1000 }),
+            contentType:"application/json",
+            dataType:"json",
+            success:function(result){
+                if(result.success){
+                    // console.log(result.t.datas);
+                    // TODO 复选框HTML 代码, 到 #assign_role_modal_container
+                }
+                //process(data);
+            },
+        });
+        // 提交请求
+    }
+
+};
