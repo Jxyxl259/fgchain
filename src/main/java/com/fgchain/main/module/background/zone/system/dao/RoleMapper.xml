@@ -85,6 +85,7 @@
     </foreach>
   </insert>
 
+
   <insert id="insertSelective" parameterType="com.fgchain.main.module.background.zone.system.entity.Role" >
     insert into t_role
     <trim prefix="(" suffix=")" suffixOverrides="," >
