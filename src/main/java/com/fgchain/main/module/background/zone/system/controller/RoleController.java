@@ -76,6 +76,7 @@ public class RoleController {
 
         RequestResult result = null;
 
+        // 清空角色原有权限，下面进行重新分配
         int affectRows = roleService.deleteOldRolePrems(roleId);
 
         List<Integer> permIds = new ArrayList<>();
@@ -98,7 +99,9 @@ public class RoleController {
         }
 
         if(CollectionUtils.isEmpty(permIds)){
-            return RequestResultFactory.success(null,"清除角色全部权限信息成功");
+
+            return RequestResultFactory.success(affectRows,"清除角色全部权限信息成功");
+
         }
 
         int newItem = roleService.allocateRolePerms(roleId, permIds);
