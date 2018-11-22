@@ -79,7 +79,10 @@ var obj = {
             success: function(result){
                 if(result.success){
                     console.log(JSON.stringify(result));
+                    // 回显所属角色的菜单权限
                     obj.showRoleMenuPerms(result.t.menus);
+                    // 回显所属角色的按钮权限
+                    //obj.showRoleButtonPerms(result.t.buttons);
                 }else{
                     console.log(result);
                     console.log("未能成功获取到数据");
@@ -102,43 +105,42 @@ var obj = {
         var setting = {
             check: {
                 enable: true,
-                autoCheckTrigger: true
+                autoCheckTrigger: true,
+                chkStyle: "checkstyle",
+                chkboxType: { "Y" : "ps", "N" : "ps" }
             },
             data: {
                 simpleData: {
-                    enable: true
-                }
-            },
-            callback: {
-                onCheck: function onCheck(event, treeId, treeNode) {
-                    if (treeNode.checkedEx) return;
-                    var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-                    treeNode.halfCheck = false;
-                    zTree.updateNode(treeNode);
-                    treeNode.checkedEx = true;
+                    enable: false
                 }
             }
         };
 
-        // var zNodes = [
-        //     {name:"test1", open:true, children:[
-        //             {name:"test1_1"}, {name:"test1_2"}]},
-        //     {name:"test2", open:true, children:[
-        //             {name:"test2_1"}, {name:"test2_2"}]}
-        // ];
-
         var zNodes = [];
 
         $.each(root_menu.childMenu, function(i, _lv_1){
-            zNodes[i]={name:_lv_1.menuName, open:true};
+            zNodes[i]={id:_lv_1.menuId, pId:root_menu.menuId, name:_lv_1.menuName, open:true, isParent:true};
+
+            if(_lv_1.halfCheck) zNodes[i].halfCheck = true;
+
             var lv_2_menus = [];
             $.each(_lv_1.childMenu, function(j, _lv_2){
-                lv_2_menus[j] = {name: _lv_2.menuName}
-            })
+                lv_2_menus[j] = {id:_lv_2.menuId, pId:_lv_1.menuId, name: _lv_2.menuName, isParent:false};
+                if(_lv_2.checked) lv_2_menus[j].checked = true;
+            });
             zNodes[i].children = lv_2_menus;
         });
 
         $.fn.zTree.init($("#menu_tree"), setting, zNodes);
     },
+
+    /**
+     * 回显该角色下面的按钮去权限（checkbox复选框展示）
+     * @param data
+     */
+    showRoleButtonPerms : function(buttons){
+
+    }
+
 };
 obj.init();

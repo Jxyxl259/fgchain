@@ -16,6 +16,10 @@ import java.util.List;
  */
 public class MenuDto extends Menu {
 
+    private Boolean checked;
+
+    private Boolean halfCheck;
+
     private List<MenuDto> childMenu = new ArrayList<MenuDto>();
 
     public MenuDto() {
@@ -32,5 +36,21 @@ public class MenuDto extends Menu {
 
     public void setChildMenu(List<MenuDto> childMenu) {
         this.childMenu = childMenu;
+    }
+
+    public Boolean getChecked() {
+        return checked;
+    }
+
+    public void setChecked(Boolean checked) {
+        this.checked = checked;
+    }
+
+    public Boolean getHalfCheck() {
+        return halfCheck;
+    }
+
+    public void setHalfCheck(Boolean halfCheck) {
+        this.halfCheck = halfCheck;
     }
 }

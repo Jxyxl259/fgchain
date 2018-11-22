@@ -11,11 +11,12 @@
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- jquery.temp模板库 -->
-    <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" crossorigin="anonymous"></script>
+    <!--<script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" crossorigin="anonymous"></script>-->
 
     <script th:href="@{/js/common.js}" src="../../../js/common.js"></script>
     <script th:href="@{/js/zone/system/user.js}" src="../../../js/zone/system/role.js"></script>
-    <script th:href="@{/ztree/js/jquery.ztree.core.min.js}" src="../../../ztree/js/jquery.ztree.core.min.js"></script>
+    <script th:href="@{/ztree/js/jquery.ztree.all.js}" src="../../../ztree/js/jquery.ztree.all.js"></script>
+    <!--<script th:href="@{/ztree/js/jquery.ztree.excheck.js}" src="../../../ztree/js/jquery.ztree.excheck.js"></script>-->
 </head>
 <body id="zone_iframe_common">
     <div id="iframe_content_container_div" class="container iframe_content_container no_padding">
@@ -37,9 +38,9 @@
                 <!-- 为角色分配权限 -->
                 <div id="perm_allocation_container_div" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 less_padding">
                     <!-- z-tree组件分配权限 -->
-                    <div id="menu_tree">
+                    <ul id="menu_tree" class="ztree">
 
-                    </div>
+                    </ul>
                 </div>
             </div>
         </div>

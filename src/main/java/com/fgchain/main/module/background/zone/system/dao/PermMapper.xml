@@ -18,7 +18,7 @@
 
   <sql id="menu_column_list">
     menu_id, perm_id, menu_name, menu_level, menu_parent_id,
-    menuOrder, menuRelativeUrl, menuAbsoluteUrl
+    menu_order, menu_relative_url, menu_absolute_url
   </sql>
 
   <select id="selectAllMenu" resultType="com.fgchain.main.module.background.zone.system.entity.Menu">

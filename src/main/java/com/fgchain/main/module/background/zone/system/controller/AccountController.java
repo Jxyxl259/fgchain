@@ -78,47 +78,78 @@ public class AccountController {
     @ResponseBody
     public RequestResult<Map<String, Object>> getRolePermByRoleId(Integer roleId){
         log.info("getPermByRoleId, roleId={}", roleId);
+
         RequestResult result = RequestResultFactory.success();
+
         List<Menu> allMenus = permService.allMenus();
 
         // 通过角色Id查询出该角色所拥有的全部菜单权限
-        List<Menu> roleMenuPerms = roleService.getMenuPermsByRoleId(roleId);
+        Map<String, Menu> rolePermsMap = new HashMap<>();
+
+        roleService.getMenuPermsByRoleId(roleId).forEach(m -> rolePermsMap.put(m.getMenuName(), m));
 
         // 通过角色Id查询出该角色所拥有的全部按钮权限
         //List<ButtonPerm> buttonPerms = roleService.getButtonPermsByRoleId(roleId);
-
 
         // 菜单权限 组成菜单模型
         // 根菜单
         MenuDto menuDto = new MenuDto(1,0,ROOT_MENU,0,0,0,null,null);
 
-        Iterables.removeIf(roleMenuPerms, m1 -> {
+        Iterables.removeIf(allMenus, m1 -> {
+
             if(MENU_LV_1.equals(m1.getMenuLevel())){
+
                 MenuDto menu_lv_1 = new MenuDto();
+
                 BeanUtils.copyProperties(m1, menu_lv_1);
+
                 menuDto.getChildMenu().add(menu_lv_1);
 
-                Iterables.removeIf(roleMenuPerms, m2 -> {
+                Iterables.removeIf(allMenus, m2 -> {
+
                     if(MENU_LV_2.equals(m2.getMenuLevel()) && m1.getMenuId().equals(m2.getMenuParentId())){
+
                         MenuDto menu_lv_2 = new MenuDto();
+
                         BeanUtils.copyProperties(m2, menu_lv_2);
+
+                        if(rolePermsMap.containsKey(m2.getMenuName())){
+
+                            menu_lv_2.setChecked(true);
+
+                            menu_lv_1.setHalfCheck(true);
+
+                        }
+
                         menu_lv_1.getChildMenu().add(menu_lv_2);
+
                         return true;
+
                     }
+
                     return false;
+
                 });
+
             }
+
             return true;
+
         });
 
         log.info("该角色所拥有的所有菜单权限：{}", JSON.toJSONString(menuDto));
         // 按钮权限，set集合
 
         Map<String, Object> permsOfRole = new HashMap<>();
+
         permsOfRole.put("menus", menuDto);
+
         //permsOfRole.put("buttons", menuDto);
+
         result.setT(permsOfRole);
+
         return  result;
+
     }
 
 
