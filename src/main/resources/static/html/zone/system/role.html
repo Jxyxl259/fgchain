@@ -27,20 +27,34 @@
             </div>
         </div>
         <div class="row offset_margin">
-            <div class="row offset_margin">
-                <!-- 角色列表 -->
-                <div id="role_list_container_div" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 less_padding" >
-                    <table id="data_table" class="date_table table table-striped">
+            <!-- 角色列表 -->
+            <div id="role_list_container_div" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 less_padding" >
+                <table id="data_table" class="date_table table table-striped">
 
-
-                    </table>
+                </table>
+            </div>
+            <!-- 为角色分配权限 -->
+            <div id="perm_allocation_container_div" class="vanish col-xs-6 col-sm-6 col-md-6 col-lg-6 less_padding">
+                <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 less_padding">
+                    <span id="perms_allocate_title">该角色所拥有的权限</span>
+                    <button id="role_perms_allocate_btn" class="btn btn-warning btn-xs" onclick="obj.rolePermsAllocate()">执行分配</button>
+                    <hr class="less_margin less_padding"/>
                 </div>
-                <!-- 为角色分配权限 -->
-                <div id="perm_allocation_container_div" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 less_padding">
-                    <!-- z-tree组件分配权限 -->
-                    <ul id="menu_tree" class="ztree">
+                <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 less_padding">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 less_padding">
+                        <span class="perms_label label label-info">菜单权限</span>
+                        <!-- z-tree组件分配菜单权限 -->
+                        <ul id="menu_tree" class="ztree">
 
-                    </ul>
+                        </ul>
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 less_padding">
+                        <span class="perms_label label label-success">按钮权限</span>
+                        <!-- checkbox分配按钮权限 -->
+                        <div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

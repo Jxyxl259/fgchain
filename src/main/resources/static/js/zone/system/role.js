@@ -68,6 +68,7 @@ var obj = {
     },
     showRolePerms : function (btn) {
         if(!btn) return;
+        $("#perm_allocation_container_div").removeClass("vanish");
         var roleId = $(btn).parent().parent().children("td").eq(0).html();
         console.log("roleId : " + roleId);
         $.ajax({
@@ -120,27 +121,38 @@ var obj = {
 
         $.each(root_menu.childMenu, function(i, _lv_1){
             zNodes[i]={id:_lv_1.menuId, pId:root_menu.menuId, name:_lv_1.menuName, open:true, isParent:true};
-
-            if(_lv_1.halfCheck) zNodes[i].halfCheck = true;
-
             var lv_2_menus = [];
+            var _lv_2_checked_num = 0;
             $.each(_lv_1.childMenu, function(j, _lv_2){
                 lv_2_menus[j] = {id:_lv_2.menuId, pId:_lv_1.menuId, name: _lv_2.menuName, isParent:false};
-                if(_lv_2.checked) lv_2_menus[j].checked = true;
+                if(_lv_2.checked) {
+                    lv_2_menus[j].checked = true;
+                    _lv_2_checked_num++;
+                }
             });
+            // 二级菜单都被选中时，一级菜单也设置为选中状态（ztree没有为 zNode设置半选中属性，所以）
             zNodes[i].children = lv_2_menus;
+            if(_lv_1.childMenu.length === _lv_2_checked_num){
+                zNodes[i].checked = true;
+            }
         });
 
         $.fn.zTree.init($("#menu_tree"), setting, zNodes);
     },
 
     /**
-     * 回显该角色下面的按钮去权限（checkbox复选框展示）
+     * 回显该角色下面的按钮权限（checkbox复选框展示）
      * @param data
      */
     showRoleButtonPerms : function(buttons){
 
-    }
+    },
 
+    /**
+     * 为角色分配权限
+     */
+    rolePermsAllocate : function(btn){
+
+    }
 };
 obj.init();

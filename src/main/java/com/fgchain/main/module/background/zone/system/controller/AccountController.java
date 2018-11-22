@@ -117,8 +117,6 @@ public class AccountController {
 
                             menu_lv_2.setChecked(true);
 
-                            menu_lv_1.setHalfCheck(true);
-
                         }
 
                         menu_lv_1.getChildMenu().add(menu_lv_2);
