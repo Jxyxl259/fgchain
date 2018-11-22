@@ -13,6 +13,7 @@ import com.fgchain.main.module.background.zone.system.service.RoleService;
 import com.fgchain.main.module.front.login.entity.User;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -112,43 +113,53 @@ public class AccountController {
         // 根菜单
         MenuDto menuDto = new MenuDto(1,0,ROOT_MENU,0,0,0,null,null);
 
-        Iterables.removeIf(allMenus, m1 -> {
+        Iterables.removeIf(allMenus, new Predicate<Menu>() {
 
-            if(MENU_LV_1.equals(m1.getMenuLevel())){
+            @Override
+            public boolean apply(Menu m1) {
 
-                MenuDto menu_lv_1 = new MenuDto();
+                if (MENU_LV_1.equals(m1.getMenuLevel())) {
 
-                BeanUtils.copyProperties(m1, menu_lv_1);
+                    MenuDto menu_lv_1 = new MenuDto();
 
-                menuDto.getChildMenu().add(menu_lv_1);
+                    BeanUtils.copyProperties(m1, menu_lv_1);
 
-                Iterables.removeIf(allMenus, m2 -> {
+                    menuDto.getChildMenu().add(menu_lv_1);
 
-                    if(MENU_LV_2.equals(m2.getMenuLevel()) && m1.getMenuId().equals(m2.getMenuParentId())){
+                    Iterables.removeIf(allMenus, new Predicate<Menu>() {
 
-                        MenuDto menu_lv_2 = new MenuDto();
+                        @Override
+                        public boolean apply(Menu m2) {
 
-                        BeanUtils.copyProperties(m2, menu_lv_2);
+                            if (MENU_LV_2.equals(m2.getMenuLevel()) && m1.getMenuId().equals(m2.getMenuParentId())) {
 
-                        if(rolePermsMap.containsKey(m2.getMenuName())){
+                                MenuDto menu_lv_2 = new MenuDto();
 
-                            menu_lv_2.setChecked(true);
+                                BeanUtils.copyProperties(m2, menu_lv_2);
+
+                                if (rolePermsMap.containsKey(m2.getMenuName())) {
+
+                                    menu_lv_2.setChecked(true);
+
+                                }
+
+                                menu_lv_1.getChildMenu().add(menu_lv_2);
+
+                                return true;
+
+                            }
+
+                            return false;
 
                         }
 
-                        menu_lv_1.getChildMenu().add(menu_lv_2);
+                    });
 
-                        return true;
+                }
 
-                    }
-
-                    return false;
-
-                });
+                return true;
 
             }
-
-            return true;
 
         });
 
