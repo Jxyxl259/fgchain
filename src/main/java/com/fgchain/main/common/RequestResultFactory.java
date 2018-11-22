@@ -32,6 +32,13 @@ public class RequestResultFactory {
         return res;
     }
 
+    public static <T> RequestResult<T> success(T t, String message){
+        RequestResult res = new RequestResult(true);
+        res.setMessage(message);
+        res.setStatusCode(GlobalMessageEnum.SUCCESS.getStatusCode());
+        res.setT(t);
+        return res;
+    }
 
     public static RequestResult faild(String faildReason){
         RequestResult res = new RequestResult(false);

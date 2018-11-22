@@ -53,16 +53,38 @@
   </select>
 
 
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_role
     where role_id = #{roleId,jdbcType=INTEGER}
   </delete>
+
+
+
+  <delete id="deleteAllPermsByRoleId" parameterType="java.lang.Integer" >
+    delete from t_role_perm
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </delete>
+
+
+
   <insert id="insert" parameterType="com.fgchain.main.module.background.zone.system.entity.Role" >
     insert into t_role (role_id, role_name, role_create_data, 
       role_create_by)
     values (#{roleId,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{roleCreateData,jdbcType=TIMESTAMP}, 
       #{roleCreateBy,jdbcType=VARCHAR})
   </insert>
+
+
+  <insert id="insertRolePerms">
+    insert into
+      t_role_perm (role_id, perm_id)
+    values
+    <foreach collection="permIds" index="index" item="permId"  separator=",">
+      ( #{roleId,jdbcType=INTEGER}, #{permId,jdbcType=INTEGER} )
+    </foreach>
+  </insert>
+
   <insert id="insertSelective" parameterType="com.fgchain.main.module.background.zone.system.entity.Role" >
     insert into t_role
     <trim prefix="(" suffix=")" suffixOverrides="," >

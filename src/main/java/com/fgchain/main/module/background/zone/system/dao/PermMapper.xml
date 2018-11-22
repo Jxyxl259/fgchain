@@ -26,6 +26,15 @@
     FROM t_menu
   </select>
 
+  <select id="selectPermIdsByMenuIds" resultType="java.lang.Integer">
+    select perm_id
+    from t_menu m
+    where m.menu_id in
+    <foreach collection="menuIds" index="index" item="menu_id" open="(" separator="," close=")">
+      #{menu_id,jdbcType=INTEGER}
+    </foreach>
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

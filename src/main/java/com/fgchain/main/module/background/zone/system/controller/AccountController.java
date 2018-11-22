@@ -54,18 +54,29 @@ public class AccountController {
     @RequestMapping(value = "/zone/sys/user/list", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public RequestResult<PageResult<User>> getUserList(@RequestBody UserDto userDto){
-    //public String getUserList(@RequestBody UserDto userDto){
+
         RequestResult<PageResult<User>> result = null;
+
         log.info("getList userDto_param:{}", JSON.toJSONString(userDto));
+
         Page<User> page = PageHelper.startPage(userDto.getPageNum(), userDto.getPageSize());
+
         List<User> list = accountService.getList(userDto);
+
         if(!CollectionUtils.isEmpty(list)){
+
             PageResult<User> pageData = new PageResult<>(page);
+
             result = RequestResultFactory.success(pageData);
+
         }else{
+
             result = RequestResultFactory.failed(EMPTY_DATA);
+
         }
+
         log.info("getList result:{}",  JSON.toJSONString(result));
+
         return result;
     }
 
@@ -77,13 +88,19 @@ public class AccountController {
     @RequestMapping("/zone/sys/user/getPermByRoleId")
     @ResponseBody
     public RequestResult<Map<String, Object>> getRolePermByRoleId(Integer roleId){
+
         log.info("getPermByRoleId, roleId={}", roleId);
 
         RequestResult result = RequestResultFactory.success();
 
+        // 菜单权限信息单独一张表，按钮权限信息
+        // 查询所有的菜单
         List<Menu> allMenus = permService.allMenus();
 
-        // 通过角色Id查询出该角色所拥有的全部菜单权限
+        // 查询所有的按钮
+        //List<Menu> allBtns = permService.allBtns();
+
+        // 查询角色所拥有的菜单权限，并放到Map中（by 角色Id）
         Map<String, Menu> rolePermsMap = new HashMap<>();
 
         roleService.getMenuPermsByRoleId(roleId).forEach(m -> rolePermsMap.put(m.getMenuName(), m));
@@ -149,6 +166,7 @@ public class AccountController {
         return  result;
 
     }
+
 
 
 }

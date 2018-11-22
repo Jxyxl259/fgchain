@@ -7,4 +7,6 @@ import java.util.List;
 public interface PermService {
 
     public List<Menu> allMenus();
+
+    List<Integer> getPermIdsByMenuIds(Integer[] menuIdArr);
 }

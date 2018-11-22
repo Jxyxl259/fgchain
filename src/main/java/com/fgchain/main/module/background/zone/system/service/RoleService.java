@@ -14,4 +14,9 @@ public interface RoleService {
     List<Perm> getPermsByRoleId(Integer roleId);
 
     List<Menu> getMenuPermsByRoleId(Integer roleId);
+
+    int deleteOldRolePrems(Integer roleId);
+
+    int allocateRolePerms(Integer roleId, List<Integer> permIds);
+
 }

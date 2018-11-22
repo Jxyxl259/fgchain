@@ -25,8 +25,14 @@ public class PermServiceImpl implements PermService {
     @Autowired
     private PermMapper permMapper;
 
+    @Override
     public List<Menu> allMenus(){
         return permMapper.selectAllMenu();
+    }
+
+    @Override
+    public List<Integer> getPermIdsByMenuIds(Integer[] menuIdArr) {
+        return permMapper.selectPermIdsByMenuIds(menuIdArr);
     }
 
 }

@@ -63,23 +63,43 @@ var fetch_table_data = function(page_num, page_size){
 
 
 var obj = {
+    roleId : null,
+    setting : {
+        check: {
+            enable: true,
+            autoCheckTrigger: true,
+            chkStyle: "checkstyle",
+            chkboxType: { "Y" : "ps", "N" : "ps" }
+        },
+        data: {
+            simpleData: {
+                enable: false
+            }
+        }
+    },
+
     init : function(){
         //this.permsAllocate();
     },
+
+    /**
+     * 回显角色所属的所有权限
+     * @param btn
+     */
     showRolePerms : function (btn) {
         if(!btn) return;
         $("#perm_allocation_container_div").removeClass("vanish");
-        var roleId = $(btn).parent().parent().children("td").eq(0).html();
-        console.log("roleId : " + roleId);
+        this.roleId = $(btn).parent().parent().children("td").eq(0).html();
+        console.log("roleId : " + this.roleId);
         $.ajax({
             url:"/zone/sys/user/getPermByRoleId",
             type:"post",
             async:true,
-            data:{"roleId": roleId},
+            data:{"roleId": this.roleId},
             dataType:"json",
             success: function(result){
                 if(result.success){
-                    console.log(JSON.stringify(result));
+                    //console.log(JSON.stringify(result));
                     // 回显所属角色的菜单权限
                     obj.showRoleMenuPerms(result.t.menus);
                     // 回显所属角色的按钮权限
@@ -93,7 +113,6 @@ var obj = {
             error:function(XMLHttpRequest, textStatus, errorThrown){
                 console.log("请求用户列表数据出错，\n错误信息:{" + textStatus + "}\n异常信息:{" + errorThrown + "}");
             }
-
         });
     },
 
@@ -102,20 +121,6 @@ var obj = {
      * @param data
      */
     showRoleMenuPerms : function(root_menu){
-
-        var setting = {
-            check: {
-                enable: true,
-                autoCheckTrigger: true,
-                chkStyle: "checkstyle",
-                chkboxType: { "Y" : "ps", "N" : "ps" }
-            },
-            data: {
-                simpleData: {
-                    enable: false
-                }
-            }
-        };
 
         var zNodes = [];
 
@@ -137,7 +142,7 @@ var obj = {
             }
         });
 
-        $.fn.zTree.init($("#menu_tree"), setting, zNodes);
+        $.fn.zTree.init($("#menu_tree"), this.setting, zNodes);
     },
 
     /**
@@ -151,8 +156,42 @@ var obj = {
     /**
      * 为角色分配权限
      */
-    rolePermsAllocate : function(btn){
+    rolePermsAllocate : function(){
+        var treeObj = $.fn.zTree.getZTreeObj("menu_tree");
 
+        // 获取到所有选中的菜单权限
+        var checked_menu_perms = treeObj.getCheckedNodes(true);
+        var menu_ids = [];
+        $.each(checked_menu_perms, function(i, menu_perm){
+            menu_ids[i] = menu_perm.id;
+        });
+        console.log(String(menu_ids));
+        // 获取到所有选中的按钮权限
+
+        // 请求后台
+        $.ajax({
+            url:"/zone/sys/role/setRolePerms",
+            type:"post",
+            async:true,
+            data:{
+                "roleId": parseInt(this.roleId),
+                "menuIds": String(menu_ids),
+                "btnIds":""},
+            dataType:"json",
+            success: function(result){
+                if(result.success){
+                    // 提示：角色权限分配成功
+
+                }else{
+                    console.log(result);
+                    console.log("未能成功给角色分配权限");
+                    alert("!!!");
+                }
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+                console.log("为角色分配权限出错，\n错误信息:{" + textStatus + "}\n异常信息:{" + errorThrown + "}");
+            }
+        })
     }
 };
 obj.init();

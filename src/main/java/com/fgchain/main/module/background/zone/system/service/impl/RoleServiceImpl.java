@@ -46,4 +46,14 @@ public class RoleServiceImpl implements RoleService {
     public List<Menu> getMenuPermsByRoleId(Integer roleId) {
         return roleMapper.selectMenuPermsByRoleId(roleId);
     }
+
+    @Override
+    public int deleteOldRolePrems(Integer roleId) {
+        return roleMapper.deleteAllPermsByRoleId(roleId);
+    }
+
+    @Override
+    public int allocateRolePerms(Integer roleId, List<Integer> permIds) {
+        return roleMapper.insertRolePerms(roleId, permIds);
+    }
 }
