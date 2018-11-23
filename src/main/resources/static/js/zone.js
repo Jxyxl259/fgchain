@@ -26,3 +26,34 @@ $(function(){
 
 
 // TODO 权限菜单加载
+var zone = {
+
+    /**
+     *
+     */
+    init:function(){
+        zone.fetchMenuPerms();
+    },
+
+    /**
+     * 拉取用户的菜单权限
+     */
+    fetchMenuPerms : function(){
+        $.post(
+            "/zone/sys/user/assignRoles",
+            { "userId": obj.userId, "roleIds":String(userRoleIds)},
+            function(result){
+                if(result.success){
+                    //console.log(result.t);
+                    //显示消息提示模态框, 并设置1.5秒之后关闭模态框
+                    setTimeout("obj.closeInteractiveHint()", 1500);
+                    obj.showInteractiveHint(result.message);
+                }else{
+                    console.log(result);
+                    obj.showInteractiveHint("执行角色分配失败,请联系管理员");
+                }
+            },"json"
+        );
+    }
+
+};

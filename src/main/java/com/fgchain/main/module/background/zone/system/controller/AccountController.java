@@ -221,6 +221,8 @@ public class AccountController {
 
         }
 
+        int delRows = accountService.wipeUserRoles(userId);
+
         String[] ids = roleIds.split(",");
 
         Integer[] userRoleIdArr = (Integer[])ConvertUtils.convert(ids, Integer.class);

@@ -31,6 +31,19 @@
   </sql>
 
 
+  <select id="selectMenuPermsByUserId" parameterType="long" resultType="com.fgchain.main.module.background.zone.system.entity.Menu">
+    select distinct
+      m.menu_id, m.perm_id, m.menu_name, m.menu_level,
+      m.menu_parent_id, m.menu_order, m.menu_relative_url,
+      m.menu_absolute_url
+    from t_user_role ur
+      join t_role r on ur.role_id = r.role_id
+      join t_role_perm rp on r.role_id = rp.role_id
+      join t_perm p on rp.perm_id = p.perm_id
+      join t_menu m on p.menu_id = m.menu_id
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+
 
   <select id="selectByPrimaryKey"
           parameterType="java.lang.Long"

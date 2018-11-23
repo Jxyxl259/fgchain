@@ -30,6 +30,7 @@ public class MyShiroRealm extends AuthorizingRealm{
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+        // TODO 授权访问控制
         return null;
     }
 
