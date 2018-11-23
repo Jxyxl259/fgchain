@@ -7,14 +7,17 @@ import com.fgchain.main.common.RequestResultFactory;
 import com.fgchain.main.module.background.zone.system.dto.MenuDto;
 import com.fgchain.main.module.background.zone.system.dto.UserDto;
 import com.fgchain.main.module.background.zone.system.entity.Menu;
+import com.fgchain.main.module.background.zone.system.entity.Role;
 import com.fgchain.main.module.background.zone.system.service.AccountService;
 import com.fgchain.main.module.background.zone.system.service.PermService;
 import com.fgchain.main.module.background.zone.system.service.RoleService;
+import com.fgchain.main.module.background.zone.system.vo.RoleVo;
 import com.fgchain.main.module.front.login.entity.User;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+import org.apache.commons.beanutils.ConvertUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -22,9 +25,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.List;
@@ -40,7 +45,7 @@ import static com.fgchain.main.common.enums.GlobalMessageEnum.EMPTY_DATA;
  * @Date 2018\11\16 0016 14:26
  * @Version 1.0.0
  */
-@Controller
+@RestController
 public class AccountController {
 
     private Logger log = LoggerFactory.getLogger(AccountController.class);
@@ -52,8 +57,8 @@ public class AccountController {
     @Autowired
     private PermService permService;
 
+
     @RequestMapping(value = "/zone/sys/user/list", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
     public RequestResult<PageResult<User>> getUserList(@RequestBody UserDto userDto){
 
         RequestResult<PageResult<User>> result = null;
@@ -87,7 +92,6 @@ public class AccountController {
      * @return
      */
     @RequestMapping("/zone/sys/user/getPermByRoleId")
-    @ResponseBody
     public RequestResult<Map<String, Object>> getRolePermByRoleId(Integer roleId){
 
         log.info("getPermByRoleId, roleId={}", roleId);
@@ -179,5 +183,53 @@ public class AccountController {
     }
 
 
+    /**
+     * 获取用户的所有角色信息，用作前台回显
+     * @param userId
+     * @return
+     */
+    @RequestMapping("/zone/sys/user/getRoleByUserId")
+    public RequestResult<List<RoleVo>> getRolesOfUser(Long userId){
 
+        log.info("getRolesOfUser, userId={}", userId);
+
+        RequestResult<List<RoleVo>> result = accountService.userRoleInfo(userId);
+
+        log.info("rolesOfUser={}", JSON.toJSONString(result));
+
+        return result;
+
+    }
+
+
+
+    /**
+     * 获取用户的所有角色信息，用作前台回显
+     * @param userId
+     * @return
+     */
+    @RequestMapping("/zone/sys/user/assignRoles")
+    public RequestResult assignRolesForUser(Long userId, String roleIds){
+
+        log.info("assignRolesForUser, userId={}, roleIds={}", userId, roleIds);
+
+        if(StringUtils.isEmpty(roleIds)){
+
+            int delRows = accountService.wipeUserRoles(userId);
+
+            return RequestResultFactory.success(delRows, "成功清除用户所有角色");
+
+        }
+
+        String[] ids = roleIds.split(",");
+
+        Integer[] userRoleIdArr = (Integer[])ConvertUtils.convert(ids, Integer.class);
+
+        RequestResult result = accountService.assignRole(userId, userRoleIdArr);
+
+        log.info("rolesOfUser={}", JSON.toJSONString(result));
+
+        return result;
+
+    }
 }

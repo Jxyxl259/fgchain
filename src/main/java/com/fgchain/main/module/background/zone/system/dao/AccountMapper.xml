@@ -81,11 +81,25 @@
     </select>
 
 
+  <select id="selectRoleByUserId" parameterType="long" resultType="int">
+    select role_id
+    from t_user_role
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+
       <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
         delete from t_user
         where user_id = #{userId,jdbcType=BIGINT}
       </delete>
 
+
+  <insert id="insertUserRoleRelation">
+    insert into t_user_role(user_id, role_id)
+    values
+      <foreach collection="roleIds" item="roleId" separator=",">
+        (#{userId,jdbcType=BIGINT}, #{roleId,jdbcType=INTEGER})
+      </foreach>
+  </insert>
 
 
 
@@ -292,4 +306,9 @@
       user_last_logout_date = #{userLastLogoutDate,jdbcType=TIMESTAMP}
     where user_id = #{userId,jdbcType=BIGINT}
   </update>
+
+  <delete id="deleteUserRoles" parameterType="long" >
+    delete from t_user_role
+    where user_id = #{userId,jdbcType=BIGINT}
+  </delete>
 </mapper>

@@ -21,3 +21,4 @@ ul.pagination_area_ul{ display: inline; margin:0px}
 #pagination_tag_div b{ line-height: 30px; margin-left: 50px;}
 
 .vanish{display:none ;}
+div.hint_dialog{width: 300px;margin-top: 100px;}
