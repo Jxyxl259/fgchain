@@ -14,7 +14,7 @@ import java.util.List;
  * @Date 2018\11\21 0021 15:16
  * @Version 1.0.0
  */
-public class MenuDto extends Menu implements Comparable {
+public class MenuDto extends Menu implements Comparable<MenuDto> {
 
     private Boolean checked;
 
@@ -57,8 +57,15 @@ public class MenuDto extends Menu implements Comparable {
         this.halfCheck = halfCheck;
     }
 
+
     @Override
-    public int compareTo(Object o) {
-        return 0;
+    public int compareTo(MenuDto o) {
+        if(this.getMenuOrder() < o.getMenuOrder()){
+            return -1;
+        }else if(this.getMenuOrder() > o.getMenuOrder()){
+            return 1;
+        }else{
+            return 0;
+        }
     }
 }

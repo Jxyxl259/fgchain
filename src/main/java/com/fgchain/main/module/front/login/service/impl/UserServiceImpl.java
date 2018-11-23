@@ -61,92 +61,47 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public MenuDto getMenuPermsOfUser(Long userId) {
-
         // 先通过用户Id查询出所属该用户的所有menu权限
         List<Menu> menus = userMapper.selectMenuPermsByUserId(userId);
 
         Map<Integer, Pair<Menu, List<MenuDto>>> menuMaker = new HashMap<>();
 
         MenuDto rootMenu = new MenuDto(1,0,ROOT_MENU,0,0,0,null,null);
-
         menus.forEach(m -> {
-
             MenuDto menuDto = new MenuDto(m);
-
             if(MENU_LV_1.equals(m.getMenuLevel())){
-
                 Pair<Menu, List<MenuDto>> menu_level_1 = menuMaker.get(m.getMenuId());
-
                 if(menu_level_1 == null){
-
                     List<MenuDto> menu_level_1_childs = new ArrayList<>();
-
                     Pair<Menu, List<MenuDto>> menuMapping = new Pair<>(m, menu_level_1_childs);
-
                     menuMaker.put(m.getMenuId(), menuMapping);
-
                 }else{
-
                     String menuName = menu_level_1.getK().getMenuName();
-
                     if(StringUtils.isEmpty(menuName)){
-
                         menu_level_1.setK(m);
-
                     }
-
                 }
-
                 rootMenu.getChildMenu().add(menuDto);
-
             }else{
-
                 Pair<Menu, List<MenuDto>> menuListPair = menuMaker.get(m.getMenuParentId());
-
                 if(menuListPair == null){
-
                     ArrayList<MenuDto> level_2_menus = new ArrayList<>(2);
-
                     level_2_menus.add(menuDto);
-
                     menuMaker.put(m.getPermId(), new Pair<>(new Menu(), level_2_menus));
-
                 }else{
-
                     menuListPair.getV().add(menuDto);
-
                 }
-
             }
-
         });
+
+        Collections.sort(rootMenu.getChildMenu());
 
         rootMenu.getChildMenu().forEach(menu_level_1 -> {
-
-            List<MenuDto> v = menuMaker.get(menu_level_1.getMenuId()).getV();
-
+            List<MenuDto> menu_level_2 = menuMaker.get(menu_level_1.getMenuId()).getV();
+            Collections.sort(menu_level_2);
+            menu_level_1.getChildMenu().addAll(menu_level_2);
         });
 
-
-//        Map<Integer, Menu> lv_1_menus = new HashMap<>();
-//
-//        Map<Integer, Menu> lv_2_menus = new HashMap<>();
-//
-//        menus.forEach(menu -> {
-//            if(MENU_LV_1.equals(menu.getMenuLevel())){
-//                lv_1_menus.put(menu.getMenuParentId(), menu);
-//            }
-//            if(MENU_LV_2.equals(menu.getMenuLevel())){
-//                lv_2_menus.put(menu.getMenuParentId(), menu);
-//            }
-//        });
-//
-//        MenuDto menuDto = new MenuDto(1,0,ROOT_MENU,0,0,0,null,null);
-//
-//        lv_1_menus.values().forEach( m1 -> {
-//            Menu menu = lv_2_menus.get(m1.getMenuId());
-//        });
-
-        return null;
+        return rootMenu;
     }
 }

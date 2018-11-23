@@ -1,6 +1,7 @@
 /* 后台页面加载时执行 */
 $(function(){
 
+    zone.init();
     // 先向后台请求用户的权限数据
     // 设置为全局变量
     // 作为参数传入菜单收缩函数
@@ -40,14 +41,12 @@ var zone = {
      */
     fetchMenuPerms : function(){
         $.post(
-            "/zone/sys/user/assignRoles",
-            { "userId": obj.userId, "roleIds":String(userRoleIds)},
+            "/user/fetchUserPerms",
             function(result){
                 if(result.success){
                     //console.log(result.t);
                     //显示消息提示模态框, 并设置1.5秒之后关闭模态框
-                    setTimeout("obj.closeInteractiveHint()", 1500);
-                    obj.showInteractiveHint(result.message);
+                    console.log(result);
                 }else{
                     console.log(result);
                     obj.showInteractiveHint("执行角色分配失败,请联系管理员");

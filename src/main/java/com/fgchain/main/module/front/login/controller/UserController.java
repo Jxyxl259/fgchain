@@ -50,16 +50,10 @@ public class UserController {
 
     @PostMapping("/fetchUserPerms")
     public RequestResult getUserPerms(HttpServletRequest request){
-
         User u = (User)request.getSession().getAttribute("user");
-
         Long userId = u.getUserId();
-
         MenuDto rootMenu = userService.getMenuPermsOfUser(userId);
-
-
-
-        return null;
+        return RequestResultFactory.success(rootMenu);
     }
 
 

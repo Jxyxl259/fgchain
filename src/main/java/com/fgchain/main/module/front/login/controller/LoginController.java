@@ -5,6 +5,7 @@ import com.fgchain.main.common.RequestResult;
 import com.fgchain.main.module.front.login.entity.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
+import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +32,6 @@ public class LoginController {
         Subject subject = SecurityUtils.getSubject();
 
         if(subject.isAuthenticated()){
-            session.setAttribute("user", u);
             return result;
         }
 
@@ -41,7 +41,8 @@ public class LoginController {
 
         try {
             subject.login(token);
-            session.setAttribute("user", u);
+            User user = (User)subject.getPrincipals().getPrimaryPrincipal();
+            session.setAttribute("user", user);
         } catch (ExcessiveAttemptsException e) {
             result.setSuccess(false);
             result.setT(false);

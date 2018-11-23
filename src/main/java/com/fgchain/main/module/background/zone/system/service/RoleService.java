@@ -13,6 +13,11 @@ public interface RoleService {
 
     List<Perm> getPermsByRoleId(Integer roleId);
 
+    /**
+     * 通过角色Id 查询角色所拥有的菜单权限
+     * @param roleId 角色Id
+     * @return 该角色Id下的所有菜单权限
+     */
     List<Menu> getMenuPermsByRoleId(Integer roleId);
 
     int deleteOldRolePrems(Integer roleId);
