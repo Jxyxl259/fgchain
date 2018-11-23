@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.fgchain.main.common.RequestResult;
 import com.fgchain.main.common.RequestResultFactory;
 import com.fgchain.main.module.background.zone.system.dto.MenuDto;
+import com.fgchain.main.module.background.zone.system.entity.Menu;
 import com.fgchain.main.module.front.login.entity.User;
 import com.fgchain.main.module.front.login.service.UserService;
 import org.slf4j.Logger;
@@ -13,7 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @description: 用户相关的控制器
@@ -53,6 +56,8 @@ public class UserController {
         Long userId = u.getUserId();
 
         MenuDto rootMenu = userService.getMenuPermsOfUser(userId);
+
+
 
         return null;
     }
