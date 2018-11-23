@@ -56,4 +56,9 @@ public class MenuDto extends Menu implements Comparable {
     public void setHalfCheck(Boolean halfCheck) {
         this.halfCheck = halfCheck;
     }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
 }
