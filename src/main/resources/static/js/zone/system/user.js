@@ -102,7 +102,7 @@ var obj = {
                     // TODO 复选框HTML 代码, 到 #assign_role_modal_container
                 }
                 //process(data);
-            },
+            }
         });
         // 提交请求
     }
