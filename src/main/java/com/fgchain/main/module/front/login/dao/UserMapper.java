@@ -1,8 +1,11 @@
 package com.fgchain.main.module.front.login.dao;
 
+import com.fgchain.main.module.background.zone.system.entity.Menu;
 import com.fgchain.main.module.front.login.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 //@Mapper
 public interface UserMapper {
@@ -65,4 +68,11 @@ public interface UserMapper {
      */
     User selectByUsernameAndPassword(@Param("username")String username,
                                      @Param("password")String password);
+
+    /**
+     * 查询用户对应角色的所有菜单权限
+     * @param userId
+     * @return
+     */
+    List<Menu> selectMenuPermsByUserId(@Param("userId")Long userId);
 }

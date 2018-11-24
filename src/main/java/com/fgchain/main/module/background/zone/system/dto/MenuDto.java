@@ -14,7 +14,7 @@ import java.util.List;
  * @Date 2018\11\21 0021 15:16
  * @Version 1.0.0
  */
-public class MenuDto extends Menu {
+public class MenuDto extends Menu implements Comparable<MenuDto> {
 
     private Boolean checked;
 
@@ -25,9 +25,12 @@ public class MenuDto extends Menu {
     public MenuDto() {
     }
 
+    public MenuDto(Menu m) {
+        super(m.getMenuId(), m.getPermId(), m.getMenuName(), m.getMenuLevel(), m.getMenuParentId(), m.getMenuOrder(), m.getMenuRelativeUrl(), m.getMenuAbsoluteUrl());
+    }
+
     public MenuDto(Integer menuId, Integer permId, String menuName, Integer menuLevel, Integer menuParentId, Integer menuOrder, String menuRelativeUrl, String menuAbsoluteUrl) {
         super(menuId, permId, menuName, menuLevel, menuParentId, menuOrder, menuRelativeUrl, menuAbsoluteUrl);
-        this.childMenu = childMenu;
     }
 
     public List<MenuDto> getChildMenu() {
@@ -52,5 +55,17 @@ public class MenuDto extends Menu {
 
     public void setHalfCheck(Boolean halfCheck) {
         this.halfCheck = halfCheck;
+    }
+
+
+    @Override
+    public int compareTo(MenuDto o) {
+        if(this.getMenuOrder() < o.getMenuOrder()){
+            return -1;
+        }else if(this.getMenuOrder() > o.getMenuOrder()){
+            return 1;
+        }else{
+            return 0;
+        }
     }
 }

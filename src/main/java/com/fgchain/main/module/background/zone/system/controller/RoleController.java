@@ -51,17 +51,29 @@ public class RoleController {
     @RequestMapping(value="/zone/sys/role/list", method = POST, consumes = APPLICATION_JSON_VALUE)
     @ResponseBody
     public RequestResult<PageResult<Role>> getRoleList(@RequestBody BaseDto pagenationInfo){
+
         RequestResult<PageResult<Role>> result = null;
+
         Page<Role> page = PageHelper.startPage(1, Integer.MAX_VALUE);
+
         List<Role> list = roleService.getList();
+
         if(!CollectionUtils.isEmpty(list)){
+
             PageResult<Role> pageData = new PageResult<>(page);
+
             result = RequestResultFactory.success(pageData);
+
         }else{
+
             result = RequestResultFactory.failed(EMPTY_DATA);
+
         }
+
         log.info("getList result:{}",  JSON.toJSONString(result));
+
         return result;
+
     }
 
     /**

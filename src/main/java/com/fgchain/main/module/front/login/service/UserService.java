@@ -1,5 +1,6 @@
 package com.fgchain.main.module.front.login.service;
 
+import com.fgchain.main.module.background.zone.system.dto.MenuDto;
 import com.fgchain.main.module.front.login.entity.User;
 
 /**
@@ -31,4 +32,11 @@ public interface UserService {
      */
     User getUserInfoByUserId(Long userId);
 
+
+    /**
+     * 获取用户所有的菜单权限
+     * @param userId
+     * @return
+     */
+    MenuDto getMenuPermsOfUser(Long userId);
 }

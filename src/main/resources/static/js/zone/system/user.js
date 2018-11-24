@@ -17,7 +17,7 @@ var data_format = {
         // user_regist_date 列
         {"ext": false, "col_name": "userRegistDate", "col_header": "注册日期", "width": "20%"},
         // 操作按钮列
-        {"ext": true, "col_header": "操作", "width": "20%", "html_content": "<button class='btn btn-info btn-xs' onclick='obj.assignRoleToUser(this)' data-toggle='modal' data-target='#roleAssign_modal'>角色分配</button>&nbsp;&nbsp;<button class='btn btn-danger btn-xs'>删除</button>"},
+        {"ext": true, "col_header": "操作", "width": "20%", "html_content": "<button class='btn btn-info btn-xs' onclick='obj.showAssignRoleToUserModal(this)' data-toggle='modal' data-target='#roleAssign_modal'>角色分配</button>&nbsp;&nbsp;<button class='btn btn-danger btn-xs'>删除</button>"},
         // user_role 用户角色列
         {"ext":false, "col_name": "userId", "display": "none"},
         // 附加隐藏列
@@ -82,7 +82,9 @@ var obj = {
      * 为用户分配角色
      * @param btn
      */
-    assignRoleToUser : function(btn){
+    showAssignRoleToUserModal : function(btn){
+        // 先清除模态框中的checkBox
+        $("#assign_role_to_user").html("");
         // 先获取到用户ID
         var tdNodes = $(btn).parent().parent().children();
         this.userId = $(tdNodes[0]).html();
@@ -90,21 +92,90 @@ var obj = {
         console.log("userId" + this.userId);
 
         // 拉取所有角色信息(checkbox)
-        $.ajax({
-            type:"post",
-            url:"/zone/sys/role/list",
-            data:JSON.stringify({ pageNum: 1, pageSize: 1000 }),
-            contentType:"application/json",
-            dataType:"json",
-            success:function(result){
+        $.post(
+            "/zone/sys/user/getRoleByUserId",
+            { "userId": obj.userId },
+            function(result){
                 if(result.success){
-                    // console.log(result.t.datas);
-                    // TODO 复选框HTML 代码, 到 #assign_role_modal_container
+                    console.log(result.t);
+                    obj.showUserRoles(result);
+                }else{
+                    console.log(result);
                 }
                 //process(data);
-            }
-        });
-        // 提交请求
-    }
+            },"json"
+        );
+    },
 
+    /**
+     * 回显用户拥有的角色
+     * @param result
+     */
+    showUserRoles : function(result){
+
+        var tmpl_html =
+            '{{each(idx, role_vo) t}}'+
+            '     <label class="checkbox-inline">'+
+            '         <input ' +
+            '           type="checkbox" ' +
+            '           name="userRole" ' +
+            '           value="${role_vo.roleId}" ' +
+            '           ${ role_vo.checked ? "checked" : null }'+
+            '           />${role_vo.roleName}'+
+            '     </label>'+
+            '{{/each}}';
+
+        $.template("form_tmpl",tmpl_html);
+        //然后再使用模板
+        $.tmpl("form_tmpl", result).appendTo("#assign_role_to_user");
+    },
+
+    /**
+     * 执行用户角色分配
+     */
+    assignUserRole : function () {
+        var userRoles = $("#assign_role_to_user input:checked");
+        var userRoleIds = [];
+        $.each(userRoles, function(i, checked){
+            userRoleIds[i] = checked.value;
+        });
+
+        $.post(
+            "/zone/sys/user/assignRoles",
+            { "userId": obj.userId, "roleIds":String(userRoleIds)},
+            function(result){
+                if(result.success){
+                    //console.log(result.t);
+                    //显示消息提示模态框, 并设置1.5秒之后关闭模态框
+                    setTimeout("obj.closeInteractiveHint()", 1500);
+                    obj.showInteractiveHint(result.message);
+                }else{
+                    console.log(result);
+                    obj.showInteractiveHint("执行角色分配失败,请联系管理员");
+                }
+            },"json"
+        );
+    },
+
+    /**
+     * 手动显示消息提示模态框
+     * @param hint
+     */
+    showInteractiveHint : function (hint) {
+        $("#hint_info_container").html(hint);
+        $('#hint_modal').modal('show');
+    },
+
+    /**
+     * 手动关闭消息提示模态框
+     */
+    closeInteractiveHint : function(){
+        var isBlock = $("#hint_modal").css("display");
+        // 如果用户没有手动关闭，那么消息提示模态框显示1.5秒之后自动关闭
+        if("block" === isBlock){
+            $("#hint_modal").modal('hide');
+        }
+
+        $("#roleAssign_modal").modal('hide');
+    }
 };

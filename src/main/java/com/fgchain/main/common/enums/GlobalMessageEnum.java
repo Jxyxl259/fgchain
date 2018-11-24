@@ -3,6 +3,7 @@ package com.fgchain.main.common.enums;
 public enum GlobalMessageEnum {
     SUCCESS("000000", "操作成功"),
     EMPTY_DATA("111111", "未查询到相关数据"),
+    PARAM_IS_NULL("999998", "参数为空"),
     FAILED("999999", "操作失败"),
     SYSTEM_ERROR("999999", "系统错误"),
 
