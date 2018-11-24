@@ -17,7 +17,7 @@
   </sql>
 
   <sql id="menu_column_list">
-    menu_id, perm_id, menu_name, menu_level, menu_parent_id,
+    menu_id, perm_id, menu_name, menu_icon, menu_level, menu_parent_id,
     menu_order, menu_relative_url, menu_absolute_url
   </sql>
 

@@ -10,6 +10,8 @@ public class Menu {
 
     private String menuName;
 
+    private String menuIcon;
+
     private Integer menuLevel;
 
     private Integer menuParentId;
@@ -27,10 +29,11 @@ public class Menu {
     public Menu() {
     }
 
-    public Menu(Integer menuId, Integer permId, String menuName, Integer menuLevel, Integer menuParentId, Integer menuOrder, String menuRelativeUrl, String menuAbsoluteUrl, Date menuCreateData, String menuCreateBy) {
+    public Menu(Integer menuId, Integer permId, String menuName, String menuIcon, Integer menuLevel, Integer menuParentId, Integer menuOrder, String menuRelativeUrl, String menuAbsoluteUrl, Date menuCreateData, String menuCreateBy) {
         this.menuId = menuId;
         this.permId = permId;
         this.menuName = menuName;
+        this.menuIcon = menuIcon;
         this.menuLevel = menuLevel;
         this.menuParentId = menuParentId;
         this.menuOrder = menuOrder;
@@ -40,10 +43,11 @@ public class Menu {
         this.menuCreateBy = menuCreateBy;
     }
 
-    public Menu(Integer menuId, Integer permId, String menuName, Integer menuLevel, Integer menuParentId, Integer menuOrder, String menuRelativeUrl, String menuAbsoluteUrl) {
+    public Menu(Integer menuId, Integer permId, String menuName, String menuIcon, Integer menuLevel, Integer menuParentId, Integer menuOrder, String menuRelativeUrl, String menuAbsoluteUrl) {
         this.menuId = menuId;
         this.permId = permId;
         this.menuName = menuName;
+        this.menuIcon = menuIcon;
         this.menuLevel = menuLevel;
         this.menuParentId = menuParentId;
         this.menuOrder = menuOrder;
@@ -69,6 +73,14 @@ public class Menu {
 
     public String getMenuName() {
         return menuName;
+    }
+
+    public String getMenuIcon() {
+        return menuIcon;
+    }
+
+    public void setMenuIcon(String menuIcon) {
+        this.menuIcon = menuIcon;
     }
 
     public void setMenuName(String menuName) {

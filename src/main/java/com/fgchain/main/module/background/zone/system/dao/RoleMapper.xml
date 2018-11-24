@@ -37,7 +37,7 @@
   </select>
 
   <select id="selectMenuPermsByRoleId" parameterType="int" resultType="com.fgchain.main.module.background.zone.system.entity.Menu">
-    select  m.menu_id, m.perm_id, m.menu_name, m.menu_level,
+    select  m.menu_id, m.perm_id, m.menu_name, m.menu_icon, m.menu_level,
       m.menu_parent_id, m.menu_order, m.menu_relative_url,
       m.menu_absolute_url
     from t_menu m

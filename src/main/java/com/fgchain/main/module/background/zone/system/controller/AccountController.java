@@ -95,7 +95,7 @@ public class AccountController {
         // TODO 通过角色Id查询出该角色所拥有的全部按钮权限 List<ButtonPerm> buttonPerms = roleService.getButtonPermsByRoleId(roleId);
 
         // 根菜单
-        MenuDto rootMenu = new MenuDto(1,0,ROOT_MENU,0,0,0,null,null);
+        MenuDto rootMenu = new MenuDto(1,0,ROOT_MENU,null,0,0,0,null,null);
         Iterables.removeIf(allMenus, new Predicate<Menu>() {
             @Override
             public boolean apply(Menu m1) {

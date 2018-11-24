@@ -26,11 +26,11 @@ public class MenuDto extends Menu implements Comparable<MenuDto> {
     }
 
     public MenuDto(Menu m) {
-        super(m.getMenuId(), m.getPermId(), m.getMenuName(), m.getMenuLevel(), m.getMenuParentId(), m.getMenuOrder(), m.getMenuRelativeUrl(), m.getMenuAbsoluteUrl());
+        super(m.getMenuId(), m.getPermId(), m.getMenuName(), m.getMenuIcon(), m.getMenuLevel(), m.getMenuParentId(), m.getMenuOrder(), m.getMenuRelativeUrl(), m.getMenuAbsoluteUrl());
     }
 
-    public MenuDto(Integer menuId, Integer permId, String menuName, Integer menuLevel, Integer menuParentId, Integer menuOrder, String menuRelativeUrl, String menuAbsoluteUrl) {
-        super(menuId, permId, menuName, menuLevel, menuParentId, menuOrder, menuRelativeUrl, menuAbsoluteUrl);
+    public MenuDto(Integer menuId, Integer permId, String menuName, String menuIcon, Integer menuLevel, Integer menuParentId, Integer menuOrder, String menuRelativeUrl, String menuAbsoluteUrl) {
+        super(menuId, permId, menuName, menuIcon, menuLevel, menuParentId, menuOrder, menuRelativeUrl, menuAbsoluteUrl);
     }
 
     public List<MenuDto> getChildMenu() {

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../css/font-awesome.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" crossorigin="anonymous"></script>
 
     <script th:href="@{/js/common.js}" src="../../js/common.js"></script>
     <script th:href="@{/js/zone.js}" src="../../js/zone.js"></script>
@@ -23,128 +24,10 @@
 <div class="container" >
     <div class="row">
         <!-- 左侧树形菜单 容器 -->
-        <div id="zone_menu_tree_container_div" class=" menu_shrink col-xs-2 col-sm-2 col-md-2 col-lg-2 no_left_padding">
-            <div class="panel-group" id="menu_tree_div">
-                <div class="menu_L1 panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <!-- 系统管理 -->
-                            <a class="glyphicon glyphicon-wrench" data-toggle="collapse" data-parent="#menu_tree_div" href="#system_branch" >
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="system_branch" class="menu_L2 panel-collapse collapse" >
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="">
-                                    <div id="zone_menu_system" class="menu_branch_content">
-                                        <ul type="none">
-                                            <li><a target="detail_iframe" href="./system/user.html">用户管理</a></li>
-                                            <li><a target="detail_iframe" href="./system/role.html">角色管理</a></li>
-                                            <li><a target="detail_iframe" href="./system/perm.html">权限管理</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class=" menu_L1 panel panel-success">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <!-- 视频管理 -->
-                            <a  class="icon-play-circle" data-toggle="collapse" data-parent="#menu_tree_div" href="#video_branch" >
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="video_branch" class="menu_L2 panel-collapse collapse"  >
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="">
-                                    <div id="zone_menu_video" class="menu_branch_content">
-                                        <ul type="none">
-                                            <li>视频列表</li>
-                                            <li>视频审核</li>
-                                            <li>视频上传</li>
-                                            <li>我的视频</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu_L1 panel panel-info">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <!-- 文章管理 -->
-                            <a  class="icon-edit" data-toggle="collapse" data-parent="#menu_tree_div" href="#article_branch" >
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="article_branch" class="menu_L2 panel-collapse collapse"  >
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="">
-                                    <div id="zone_menu_article" class="menu_branch_content">
-                                        <ul type="none">
-                                            <li>文章列表</li>
-                                            <li>文章审核</li>
-                                            <li>文章发布</li>
-                                            <li>我的文章</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu_L1 panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <!-- 文章管理 -->
-                            <a  class=" icon-money" data-toggle="collapse" data-parent="#menu_tree_div" href="#trade_branch" >
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="trade_branch" class="menu_L2 panel-collapse collapse"  >
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="">
-                                    <div id="zone_menu_trade" class="menu_branch_content">
-                                        <ul type="none">
-                                            <li>商品发布</li>
-                                            <li>我的在售</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu_L1 panel panel-warning">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <!-- 广告管理 -->
-                            <a class="icon-lemon"  data-toggle="collapse" data-parent="#menu_tree_div" href="#advertise_branch" >
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="advertise_branch" class="menu_L2 panel-collapse collapse"  >
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="">
-                                    <div id="zone_menu_advertise" class="menu_branch_content">
-                                        <ul type="none">
-                                            <li>广告配置</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div id="zone_menu_tree_container_div" class="panel-group menu_shrink col-xs-2 col-sm-2 col-md-2 col-lg-2 no_left_padding">
+           <!-- <div class="" id="menu_tree_div">
+
+            </div>-->
         </div>
 
         <!--  右侧 iframe 内联框架 容器-->

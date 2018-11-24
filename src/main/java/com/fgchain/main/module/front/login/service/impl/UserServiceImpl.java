@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService {
 
         Map<Integer, Pair<Menu, List<MenuDto>>> menuMaker = new HashMap<>();
 
-        MenuDto rootMenu = new MenuDto(1,0,ROOT_MENU,0,0,0,null,null);
+        MenuDto rootMenu = new MenuDto(1,0,ROOT_MENU,null,0,0,0,null,null);
         menus.forEach(m -> {
             MenuDto menuDto = new MenuDto(m);
             if(MENU_LV_1.equals(m.getMenuLevel())){
