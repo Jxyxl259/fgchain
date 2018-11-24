@@ -17,8 +17,6 @@ $(function(){
 
 
 
-
-// TODO 权限菜单加载
 var zone = {
 
     /**
@@ -50,7 +48,7 @@ var zone = {
 
         var menu_tree_content_html =
         '{{each(idx, _m_lv_1) childMenu}}'+
-        ' <div class="menu_L1 panel panel-default">'+
+        ' <div class="menu_L1 panel panel-warning">'+
         '     <div class="less_padding panel-heading">'+
         '           <h4 class="panel-title">'+
         '               <a class="${_m_lv_1.menuIcon}" data-toggle="collapse" data-parent="#menu_tree_div" href="#menu_level_1_id_${_m_lv_1.menuId}" ></a>'+
