@@ -20,7 +20,7 @@
                 <nav id="top_nav">
                     <a id="show_home_page_btn"
                        type="button"
-                       class="top_nav_btn btn btn-success  btn-xs" href="/index">首页</a>
+                       class="top_nav_btn btn btn-success  btn-xs" href="/index">[[#{message.index.index}]]</a>
                 </nav>
 
             </div>
@@ -50,7 +50,7 @@
                                     <img id="user_header_icon_img" src="../../image/login_page/username_bg_40x40.jpg" height="40" width="40"/>
                                 </div>
                             </td>
-                            <td width="270px"><input id="username" name="userName" placeholder="用户名" class="input_text" onblur="showUserHeaderIcon(this)"/></td>
+                            <td width="270px"><input id="username" name="userName" placeholder="username" class="input_text" onblur="showUserHeaderIcon(this)"/></td>
                         </tr>
                         <tr>
                             <td width="150px">
@@ -58,19 +58,19 @@
                                     <img src="../../image/login_page/password_bg_40x40.jpg" height="40" width="40"/>
                                 </div>
                             </td>
-                            <td width="270px"><input type="password" id="password" name="userPassword" placeholder="密码" class="input_text"/></td>
+                            <td width="270px"><input type="password" id="password" name="userPassword" placeholder="password" class="input_text"/></td>
                         </tr>
                         <tr class="rememberme_tr">
                             <td  align="right">
                                 <input type="checkbox" name="rememberMe" checked="true" value="checked"/>
                             </td>
-                            <td id="remember_me_td" class="remember_me">记住我</td>
+                            <td id="remember_me_td" class="remember_me">[[#{message.index.remember_me}]]</td>
                         </tr>
                         <tfoot>
                         <tr>
                             <td colspan="2">
-                                <button id="login_btn" class="login">登陆</button>
-                                <button id="regist_btn" class="regist">注册</button>
+                                <button id="login_btn" class="login">[[#{message.index.login}]]</button>
+                                <button id="regist_btn" class="regist">[[#{message.index.regist}]]</button>
                             </td>
                         </tr>
                         </tfoot>
@@ -81,6 +81,6 @@
         </div>
     </div>
 <!-- 公共尾 -->
-<div th:insert="~{footer :: footer}"></div>
+<!--<div th:insert="~{footer :: footer}"></div>-->
 </body>
 </html>

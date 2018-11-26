@@ -20,8 +20,8 @@
     <script type="text/javascript">
 
         $(function () {
-            //$("#carousel_img_div").attr("style","background-image: url('/image/carousel/lunbo_02.png') ; background-size: 750px 300px");
-            //alert("aaaa");
+            $("#carousel_img_div").attr("style","background-image: url('/image/carousel/bob_poster.jpg') ; background-size: 750px 300px");
+           // alert("aaaa");
 
 
         });
@@ -41,19 +41,18 @@
     <div class="row">
         <div id="home_page_top_nav_div" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <ul id="home_page_top_nav_ul" type="none">
-                <li class="across_li">视频</li>
-                <li class="across_li">知书</li>
-                <li class="across_li">热图</li>
-                <li class="across_li">活动</li>
-                <li class="across_li">圈子</li>
-                <li class="across_li">铺子</li>
+                <li class="across_li">[[#{message.index.video}]]</li>
+                <li class="across_li">[[#{message.index.article}]]</li>
+                <li class="across_li">[[#{message.index.pic}]]</li>
+                <li class="across_li">[[#{message.index.mob}]]</li>
+                <li class="across_li">[[#{message.index.group}]]</li>
+                <li class="across_li">[[#{message.index.yard_sale}]]</li>
             </ul>
         </div>
     </div>
 
     <!-- 登录表单的容器 -->
     <div id="login_form_container" class="vanish">
-        <!--<iframe id="login_form_iframe" class="middle_form_iframe " src="./front/fragement/login_form.html"></iframe>-->
         <div id="login_from_div" class="login_div">
             <form id="login_form" action="" method="post">
                 <table>
@@ -87,13 +86,13 @@
                         <td  align="right">
                             <input type="checkbox" name="rememberMe" checked="true" value="checked"/>
                         </td>
-                        <td>记住我</td>
+                        <td>[[#{message.index.remember_me}]]</td>
                     </tr>
                     <tfoot>
                     <tr>
                         <td colspan="2">
-                            <button id="login_btn" class="login">登陆</button>
-                            <button id="regist_btn" class="regist">注册</button>
+                            <button id="login_btn" class="login">[[#{message.index.login}]]</button>
+                            <button id="regist_btn" class="regist">[[#{message.index.regist}]]</button>
                         </td>
                     </tr>
                     </tfoot>
@@ -124,7 +123,7 @@
                 <!-- 轮播图下方 切换图片小圆点 -->
                 <div class="row">
                     <div id="home_page_carousel_point_div" class=" col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <span id="hot_title" front="color:write">死飞不回链，生活不回头</span>
+                        <span id="hot_title" front="color:write">再难，都要对生活充满希望啊~</span>
                         <div id="carousel_point_box">
                             <span class="carousel_point carousel_active_point"></span>
                             <span class="carousel_point inactive_carousel_point"></span>

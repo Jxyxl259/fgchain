@@ -12,12 +12,12 @@
             <nav id="top_nav">
                 <a id="show_home_page_btn"
                    type="button"
-                   class="top_nav_btn btn btn-success  btn-xs" href="/index">首页</a>
+                   class="top_nav_btn btn btn-success  btn-xs" href="/index">[[#{message.index.index}]]</a>
 
                 <button id="show_login_form_btn"
                         type="button"
                         class="top_nav_btn btn btn-success  btn-xs"
-                        th:if="${session.user == null}">登陆</button>
+                        th:if="${session.user == null}">[[#{message.index.login}]]</button>
 
                 <!-- 按钮下拉框 -->
                 <div class="btn-group" th:if="${session.user != null}">
@@ -34,7 +34,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="/logout">logout</a>
+                            <a href="/logout">[[#{message.index.logout}]]</a>
                         </li>
                     </ul>
                 </div>
