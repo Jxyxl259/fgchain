@@ -214,7 +214,7 @@ public class MyShiroConfig{
         MyFilterChainManager filterChainManager = new MyFilterChainManager();
 
         filterChainManager.setLoginUrl("/toLoginPage");
-        filterChainManager.setSuccessUrl("/index");
+        filterChainManager.setSuccessUrl("/");
         filterChainManager.setUnauthorizedUrl("/toUnauthorizedPage");
 
         // 配置过滤器过滤规则
